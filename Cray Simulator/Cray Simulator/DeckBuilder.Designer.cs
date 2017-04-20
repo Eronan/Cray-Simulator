@@ -33,8 +33,8 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.label_Counts = new System.Windows.Forms.Label();
             this.tagToolStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.CardTextBox = new System.Windows.Forms.RichTextBox();
-            this.cardPicture = new System.Windows.Forms.PictureBox();
+            this.richTextBox_Info = new System.Windows.Forms.RichTextBox();
+            this.pictureBox_Info = new System.Windows.Forms.PictureBox();
             this.label_G = new System.Windows.Forms.Label();
             this.listBox_G = new System.Windows.Forms.ListBox();
             this.DeckMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -53,6 +53,8 @@
             this.FileMenu_Export = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu_Fight = new System.Windows.Forms.ToolStripMenuItem();
             this.FightMenu_Test = new System.Windows.Forms.ToolStripMenuItem();
+            this.FightMenu_Listen = new System.Windows.Forms.ToolStripMenuItem();
+            this.FightMenu_Connect = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenu_About = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenu_Settings = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,9 +68,7 @@
             this.textBox_NameSearch = new System.Windows.Forms.TextBox();
             this.SearchTip = new System.Windows.Forms.ToolTip(this.components);
             this.listBox_Normal = new System.Windows.Forms.ListBox();
-            this.FightMenu_Listen = new System.Windows.Forms.ToolStripMenuItem();
-            this.FightMenu_Connect = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.cardPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).BeginInit();
             this.DeckMenuStrip.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.SearchBoxStrip.SuspendLayout();
@@ -86,7 +86,7 @@
             this.label_Counts.Location = new System.Drawing.Point(827, 199);
             this.label_Counts.Name = "label_Counts";
             this.label_Counts.Size = new System.Drawing.Size(55, 13);
-            this.label_Counts.TabIndex = 48;
+            this.label_Counts.TabIndex = 12;
             this.label_Counts.Text = "G Zone: 0";
             // 
             // tagToolStrip
@@ -95,26 +95,27 @@
             this.tagToolStrip.Size = new System.Drawing.Size(153, 22);
             this.tagToolStrip.Text = "Tag Starting Vg";
             // 
-            // CardTextBox
+            // richTextBox_Info
             // 
-            this.CardTextBox.BackColor = System.Drawing.Color.White;
-            this.CardTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CardTextBox.Location = new System.Drawing.Point(528, 199);
-            this.CardTextBox.Name = "CardTextBox";
-            this.CardTextBox.ReadOnly = true;
-            this.CardTextBox.Size = new System.Drawing.Size(293, 215);
-            this.CardTextBox.TabIndex = 37;
-            this.CardTextBox.Text = "";
+            this.richTextBox_Info.BackColor = System.Drawing.Color.White;
+            this.richTextBox_Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox_Info.Location = new System.Drawing.Point(528, 199);
+            this.richTextBox_Info.Name = "richTextBox_Info";
+            this.richTextBox_Info.ReadOnly = true;
+            this.richTextBox_Info.Size = new System.Drawing.Size(293, 215);
+            this.richTextBox_Info.TabIndex = 11;
+            this.richTextBox_Info.Text = "";
             // 
-            // cardPicture
+            // pictureBox_Info
             // 
-            this.cardPicture.BackColor = System.Drawing.SystemColors.Control;
-            this.cardPicture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.cardPicture.Location = new System.Drawing.Point(615, 31);
-            this.cardPicture.Name = "cardPicture";
-            this.cardPicture.Size = new System.Drawing.Size(120, 162);
-            this.cardPicture.TabIndex = 36;
-            this.cardPicture.TabStop = false;
+            this.pictureBox_Info.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox_Info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_Info.Location = new System.Drawing.Point(615, 31);
+            this.pictureBox_Info.Name = "pictureBox_Info";
+            this.pictureBox_Info.Size = new System.Drawing.Size(120, 162);
+            this.pictureBox_Info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_Info.TabIndex = 36;
+            this.pictureBox_Info.TabStop = false;
             // 
             // label_G
             // 
@@ -123,7 +124,7 @@
             this.label_G.Location = new System.Drawing.Point(357, 277);
             this.label_G.Name = "label_G";
             this.label_G.Size = new System.Drawing.Size(54, 13);
-            this.label_G.TabIndex = 35;
+            this.label_G.TabIndex = 9;
             this.label_G.Text = "G Units: 0";
             // 
             // listBox_G
@@ -135,8 +136,9 @@
             this.listBox_G.Name = "listBox_G";
             this.listBox_G.Size = new System.Drawing.Size(165, 121);
             this.listBox_G.Sorted = true;
-            this.listBox_G.TabIndex = 34;
+            this.listBox_G.TabIndex = 10;
             this.listBox_G.ValueMember = "Key";
+            this.listBox_G.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
             // DeckMenuStrip
             // 
@@ -159,7 +161,7 @@
             this.S.Location = new System.Drawing.Point(354, 28);
             this.S.Name = "S";
             this.S.Size = new System.Drawing.Size(79, 13);
-            this.S.TabIndex = 33;
+            this.S.TabIndex = 7;
             this.S.Text = "Trigger Units: 0";
             // 
             // listBox_Trigger
@@ -171,8 +173,9 @@
             this.listBox_Trigger.Name = "listBox_Trigger";
             this.listBox_Trigger.Size = new System.Drawing.Size(165, 225);
             this.listBox_Trigger.Sorted = true;
-            this.listBox_Trigger.TabIndex = 32;
+            this.listBox_Trigger.TabIndex = 8;
             this.listBox_Trigger.ValueMember = "Key";
+            this.listBox_Trigger.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
             // label_Normal
             // 
@@ -181,7 +184,7 @@
             this.label_Normal.Location = new System.Drawing.Point(183, 30);
             this.label_Normal.Name = "label_Normal";
             this.label_Normal.Size = new System.Drawing.Size(79, 13);
-            this.label_Normal.TabIndex = 31;
+            this.label_Normal.TabIndex = 5;
             this.label_Normal.Text = "Normal Units: 0";
             // 
             // openFileDialog
@@ -202,7 +205,7 @@
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.MainMenu.Size = new System.Drawing.Size(890, 24);
-            this.MainMenu.TabIndex = 25;
+            this.MainMenu.TabIndex = 0;
             this.MainMenu.Text = "menuStrip1";
             // 
             // MainMenu_FileMenu
@@ -266,8 +269,22 @@
             // FightMenu_Test
             // 
             this.FightMenu_Test.Name = "FightMenu_Test";
-            this.FightMenu_Test.Size = new System.Drawing.Size(152, 22);
+            this.FightMenu_Test.Size = new System.Drawing.Size(123, 22);
             this.FightMenu_Test.Text = "Test";
+            // 
+            // FightMenu_Listen
+            // 
+            this.FightMenu_Listen.Name = "FightMenu_Listen";
+            this.FightMenu_Listen.Size = new System.Drawing.Size(123, 22);
+            this.FightMenu_Listen.Text = "Listen";
+            this.FightMenu_Listen.Visible = false;
+            // 
+            // FightMenu_Connect
+            // 
+            this.FightMenu_Connect.Name = "FightMenu_Connect";
+            this.FightMenu_Connect.Size = new System.Drawing.Size(123, 22);
+            this.FightMenu_Connect.Text = "Connect";
+            this.FightMenu_Connect.Visible = false;
             // 
             // helpToolStripMenuItem
             // 
@@ -306,8 +323,11 @@
             this.listBox_Search.Name = "listBox_Search";
             this.listBox_Search.Size = new System.Drawing.Size(168, 355);
             this.listBox_Search.Sorted = true;
-            this.listBox_Search.TabIndex = 26;
+            this.listBox_Search.TabIndex = 4;
             this.listBox_Search.ValueMember = "Key";
+            this.listBox_Search.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            this.listBox_Search.DoubleClick += new System.EventHandler(this.listBox_Search_DoubleClick);
+            this.listBox_Search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBox_Search_KeyPress);
             // 
             // SearchBoxStrip
             // 
@@ -339,27 +359,33 @@
             this.Button_AdvSearch.Margin = new System.Windows.Forms.Padding(0);
             this.Button_AdvSearch.Name = "Button_AdvSearch";
             this.Button_AdvSearch.Size = new System.Drawing.Size(23, 23);
-            this.Button_AdvSearch.TabIndex = 29;
+            this.Button_AdvSearch.TabIndex = 3;
             this.SearchTip.SetToolTip(this.Button_AdvSearch, "Advanced Search");
             this.Button_AdvSearch.UseVisualStyleBackColor = false;
             // 
             // textBox_SetSearch
             // 
             this.textBox_SetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_SetSearch.ForeColor = System.Drawing.Color.Gray;
             this.textBox_SetSearch.Location = new System.Drawing.Point(111, 31);
             this.textBox_SetSearch.Name = "textBox_SetSearch";
             this.textBox_SetSearch.Size = new System.Drawing.Size(45, 20);
-            this.textBox_SetSearch.TabIndex = 28;
+            this.textBox_SetSearch.TabIndex = 2;
             this.textBox_SetSearch.Text = "Set";
+            this.textBox_SetSearch.GotFocus += new System.EventHandler(this.SearchBox_GotFocus);
+            this.textBox_SetSearch.LostFocus += new System.EventHandler(this.textBox_SetSearch_LostFocus);
             // 
             // textBox_NameSearch
             // 
             this.textBox_NameSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_NameSearch.ForeColor = System.Drawing.Color.Gray;
             this.textBox_NameSearch.Location = new System.Drawing.Point(12, 31);
             this.textBox_NameSearch.Name = "textBox_NameSearch";
             this.textBox_NameSearch.Size = new System.Drawing.Size(97, 20);
-            this.textBox_NameSearch.TabIndex = 27;
+            this.textBox_NameSearch.TabIndex = 1;
             this.textBox_NameSearch.Text = "Name";
+            this.textBox_NameSearch.GotFocus += new System.EventHandler(this.SearchBox_GotFocus);
+            this.textBox_NameSearch.LostFocus += new System.EventHandler(this.textBox_NameSearch_LostFocus);
             // 
             // SearchTip
             // 
@@ -374,22 +400,9 @@
             this.listBox_Normal.Name = "listBox_Normal";
             this.listBox_Normal.Size = new System.Drawing.Size(165, 368);
             this.listBox_Normal.Sorted = true;
-            this.listBox_Normal.TabIndex = 30;
+            this.listBox_Normal.TabIndex = 6;
             this.listBox_Normal.ValueMember = "Key";
-            // 
-            // FightMenu_Listen
-            // 
-            this.FightMenu_Listen.Name = "FightMenu_Listen";
-            this.FightMenu_Listen.Size = new System.Drawing.Size(152, 22);
-            this.FightMenu_Listen.Text = "Listen";
-            this.FightMenu_Listen.Visible = false;
-            // 
-            // FightMenu_Connect
-            // 
-            this.FightMenu_Connect.Name = "FightMenu_Connect";
-            this.FightMenu_Connect.Size = new System.Drawing.Size(152, 22);
-            this.FightMenu_Connect.Text = "Connect";
-            this.FightMenu_Connect.Visible = false;
+            this.listBox_Normal.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
             // DeckBuilder
             // 
@@ -397,8 +410,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 418);
             this.Controls.Add(this.label_Counts);
-            this.Controls.Add(this.CardTextBox);
-            this.Controls.Add(this.cardPicture);
+            this.Controls.Add(this.richTextBox_Info);
+            this.Controls.Add(this.pictureBox_Info);
             this.Controls.Add(this.label_G);
             this.Controls.Add(this.listBox_G);
             this.Controls.Add(this.S);
@@ -413,7 +426,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DeckBuilder";
             this.Text = "Cray Simulator";
-            ((System.ComponentModel.ISupportInitialize)(this.cardPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).EndInit();
             this.DeckMenuStrip.ResumeLayout(false);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
@@ -428,8 +441,8 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Label label_Counts;
         private System.Windows.Forms.ToolStripMenuItem tagToolStrip;
-        private System.Windows.Forms.RichTextBox CardTextBox;
-        private System.Windows.Forms.PictureBox cardPicture;
+        private System.Windows.Forms.RichTextBox richTextBox_Info;
+        private System.Windows.Forms.PictureBox pictureBox_Info;
         private System.Windows.Forms.Label label_G;
         private System.Windows.Forms.ListBox listBox_G;
         private System.Windows.Forms.ContextMenuStrip DeckMenuStrip;
