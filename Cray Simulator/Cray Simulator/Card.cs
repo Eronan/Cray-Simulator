@@ -237,12 +237,21 @@ namespace Cray_Simulator
 
         public bool IsClan(string s)
         {
-            return s == _clan;
+            if (s == "Any") return true;
+            else return s.ToUpper() == _clan.ToUpper();
         }
 
         public bool IsRace(string s)
         {
-            return _race.Contains(s);
+            if (s == "Any") return true;
+            else
+            {
+                foreach (string str in _race)
+                {
+                    if (str.ToUpper() == s.ToUpper()) return true;
+                }
+                return false;
+            }
         }
 
         public bool IsGGuardian
@@ -269,6 +278,11 @@ namespace Cray_Simulator
         public KeyValuePair<string, string> KeyValuePair
         {
             get { return new KeyValuePair<string, string>(_cID, _name); }
+        }
+
+        public bool HasEffect(string s)
+        {
+            return _abilities.Contains(s.ToUpper());
         }
 
         public string InformationText

@@ -72,6 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvSearch.Designer.cs">
+      <DependentUpon>AdvSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Card.cs" />
     <Compile Include="DeckBuilder.cs">
       <SubType>Form</SubType>
@@ -81,6 +87,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdvSearch.resx">
+      <DependentUpon>AdvSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeckBuilder.resx">
       <DependentUpon>DeckBuilder.cs</DependentUpon>
     </EmbeddedResource>

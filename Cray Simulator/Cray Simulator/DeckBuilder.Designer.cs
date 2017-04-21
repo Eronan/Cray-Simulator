@@ -34,12 +34,11 @@
             this.label_Counts = new System.Windows.Forms.Label();
             this.tagToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox_Info = new System.Windows.Forms.RichTextBox();
-            this.pictureBox_Info = new System.Windows.Forms.PictureBox();
             this.label_G = new System.Windows.Forms.Label();
             this.listBox_G = new System.Windows.Forms.ListBox();
             this.DeckMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeToolStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.S = new System.Windows.Forms.Label();
+            this.label_Trigger = new System.Windows.Forms.Label();
             this.listBox_Trigger = new System.Windows.Forms.ListBox();
             this.label_Normal = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -63,15 +62,16 @@
             this.SearchBoxStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.Button_AdvSearch = new System.Windows.Forms.Button();
             this.textBox_SetSearch = new System.Windows.Forms.TextBox();
             this.textBox_NameSearch = new System.Windows.Forms.TextBox();
             this.SearchTip = new System.Windows.Forms.ToolTip(this.components);
             this.listBox_Normal = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).BeginInit();
+            this.pictureBox_Info = new System.Windows.Forms.PictureBox();
+            this.Button_AdvSearch = new System.Windows.Forms.Button();
             this.DeckMenuStrip.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.SearchBoxStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).BeginInit();
             this.SuspendLayout();
             // 
             // saveFileDialog
@@ -83,11 +83,12 @@
             // label_Counts
             // 
             this.label_Counts.AutoSize = true;
-            this.label_Counts.Location = new System.Drawing.Point(827, 199);
+            this.label_Counts.Location = new System.Drawing.Point(827, 46);
             this.label_Counts.Name = "label_Counts";
-            this.label_Counts.Size = new System.Drawing.Size(55, 13);
+            this.label_Counts.Size = new System.Drawing.Size(45, 169);
             this.label_Counts.TabIndex = 12;
-            this.label_Counts.Text = "G Zone: 0";
+            this.label_Counts.Text = "Deck: 0\r\nSnt: 0\r\nG0: 0\r\nG1: 0\r\nG2: 0\r\nG3: 0\r\nG4: 0\r\nHT: 0\r\nCT: 0\r\nST: 0\r\nDT: 0\r\nS" +
+    "tr: 0\r\nGGd: 0";
             // 
             // tagToolStrip
             // 
@@ -105,17 +106,6 @@
             this.richTextBox_Info.Size = new System.Drawing.Size(293, 215);
             this.richTextBox_Info.TabIndex = 11;
             this.richTextBox_Info.Text = "";
-            // 
-            // pictureBox_Info
-            // 
-            this.pictureBox_Info.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox_Info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_Info.Location = new System.Drawing.Point(615, 31);
-            this.pictureBox_Info.Name = "pictureBox_Info";
-            this.pictureBox_Info.Size = new System.Drawing.Size(120, 162);
-            this.pictureBox_Info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_Info.TabIndex = 36;
-            this.pictureBox_Info.TabStop = false;
             // 
             // label_G
             // 
@@ -135,10 +125,11 @@
             this.listBox_G.Location = new System.Drawing.Point(357, 293);
             this.listBox_G.Name = "listBox_G";
             this.listBox_G.Size = new System.Drawing.Size(165, 121);
-            this.listBox_G.Sorted = true;
             this.listBox_G.TabIndex = 10;
             this.listBox_G.ValueMember = "Key";
-            this.listBox_G.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            this.listBox_G.SelectedIndexChanged += new System.EventHandler(this.listBox_G_SelectedIndexChanged);
+            this.listBox_G.DoubleClick += new System.EventHandler(this.listBox_Normal_DoubleClick);
+            this.listBox_G.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox_KeyDown);
             // 
             // DeckMenuStrip
             // 
@@ -154,15 +145,15 @@
             this.removeToolStrip.Size = new System.Drawing.Size(153, 22);
             this.removeToolStrip.Text = "Remove";
             // 
-            // S
+            // label_Trigger
             // 
-            this.S.AutoSize = true;
-            this.S.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.S.Location = new System.Drawing.Point(354, 28);
-            this.S.Name = "S";
-            this.S.Size = new System.Drawing.Size(79, 13);
-            this.S.TabIndex = 7;
-            this.S.Text = "Trigger Units: 0";
+            this.label_Trigger.AutoSize = true;
+            this.label_Trigger.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label_Trigger.Location = new System.Drawing.Point(354, 28);
+            this.label_Trigger.Name = "label_Trigger";
+            this.label_Trigger.Size = new System.Drawing.Size(79, 13);
+            this.label_Trigger.TabIndex = 7;
+            this.label_Trigger.Text = "Trigger Units: 0";
             // 
             // listBox_Trigger
             // 
@@ -172,10 +163,11 @@
             this.listBox_Trigger.Location = new System.Drawing.Point(357, 46);
             this.listBox_Trigger.Name = "listBox_Trigger";
             this.listBox_Trigger.Size = new System.Drawing.Size(165, 225);
-            this.listBox_Trigger.Sorted = true;
             this.listBox_Trigger.TabIndex = 8;
             this.listBox_Trigger.ValueMember = "Key";
-            this.listBox_Trigger.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            this.listBox_Trigger.SelectedIndexChanged += new System.EventHandler(this.listBox_Trigger_SelectedIndexChanged);
+            this.listBox_Trigger.DoubleClick += new System.EventHandler(this.listBox_Normal_DoubleClick);
+            this.listBox_Trigger.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox_KeyDown);
             // 
             // label_Normal
             // 
@@ -322,10 +314,9 @@
             this.listBox_Search.Location = new System.Drawing.Point(12, 59);
             this.listBox_Search.Name = "listBox_Search";
             this.listBox_Search.Size = new System.Drawing.Size(168, 355);
-            this.listBox_Search.Sorted = true;
             this.listBox_Search.TabIndex = 4;
             this.listBox_Search.ValueMember = "Key";
-            this.listBox_Search.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            this.listBox_Search.SelectedIndexChanged += new System.EventHandler(this.listBox_Search_SelectedIndexChanged);
             this.listBox_Search.DoubleClick += new System.EventHandler(this.listBox_Search_DoubleClick);
             this.listBox_Search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBox_Search_KeyPress);
             // 
@@ -349,20 +340,6 @@
             this.resetToolStrip.Size = new System.Drawing.Size(140, 22);
             this.resetToolStrip.Text = "Reset Search";
             // 
-            // Button_AdvSearch
-            // 
-            this.Button_AdvSearch.BackColor = System.Drawing.Color.Transparent;
-            this.Button_AdvSearch.FlatAppearance.BorderSize = 0;
-            this.Button_AdvSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_AdvSearch.Image = global::Cray_Simulator.Properties.Resources.Icon_Search;
-            this.Button_AdvSearch.Location = new System.Drawing.Point(157, 28);
-            this.Button_AdvSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.Button_AdvSearch.Name = "Button_AdvSearch";
-            this.Button_AdvSearch.Size = new System.Drawing.Size(23, 23);
-            this.Button_AdvSearch.TabIndex = 3;
-            this.SearchTip.SetToolTip(this.Button_AdvSearch, "Advanced Search");
-            this.Button_AdvSearch.UseVisualStyleBackColor = false;
-            // 
             // textBox_SetSearch
             // 
             this.textBox_SetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -372,6 +349,7 @@
             this.textBox_SetSearch.Size = new System.Drawing.Size(45, 20);
             this.textBox_SetSearch.TabIndex = 2;
             this.textBox_SetSearch.Text = "Set";
+            this.textBox_SetSearch.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             this.textBox_SetSearch.GotFocus += new System.EventHandler(this.SearchBox_GotFocus);
             this.textBox_SetSearch.LostFocus += new System.EventHandler(this.textBox_SetSearch_LostFocus);
             // 
@@ -384,6 +362,7 @@
             this.textBox_NameSearch.Size = new System.Drawing.Size(97, 20);
             this.textBox_NameSearch.TabIndex = 1;
             this.textBox_NameSearch.Text = "Name";
+            this.textBox_NameSearch.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             this.textBox_NameSearch.GotFocus += new System.EventHandler(this.SearchBox_GotFocus);
             this.textBox_NameSearch.LostFocus += new System.EventHandler(this.textBox_NameSearch_LostFocus);
             // 
@@ -399,10 +378,37 @@
             this.listBox_Normal.Location = new System.Drawing.Point(186, 46);
             this.listBox_Normal.Name = "listBox_Normal";
             this.listBox_Normal.Size = new System.Drawing.Size(165, 368);
-            this.listBox_Normal.Sorted = true;
             this.listBox_Normal.TabIndex = 6;
             this.listBox_Normal.ValueMember = "Key";
-            this.listBox_Normal.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            this.listBox_Normal.SelectedIndexChanged += new System.EventHandler(this.listBox_Normal_SelectedIndexChanged);
+            this.listBox_Normal.DoubleClick += new System.EventHandler(this.listBox_Normal_DoubleClick);
+            this.listBox_Normal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox_KeyDown);
+            // 
+            // pictureBox_Info
+            // 
+            this.pictureBox_Info.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox_Info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_Info.Location = new System.Drawing.Point(615, 31);
+            this.pictureBox_Info.Name = "pictureBox_Info";
+            this.pictureBox_Info.Size = new System.Drawing.Size(120, 162);
+            this.pictureBox_Info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_Info.TabIndex = 36;
+            this.pictureBox_Info.TabStop = false;
+            // 
+            // Button_AdvSearch
+            // 
+            this.Button_AdvSearch.BackColor = System.Drawing.Color.Transparent;
+            this.Button_AdvSearch.FlatAppearance.BorderSize = 0;
+            this.Button_AdvSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_AdvSearch.Image = global::Cray_Simulator.Properties.Resources.Icon_Search;
+            this.Button_AdvSearch.Location = new System.Drawing.Point(157, 28);
+            this.Button_AdvSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_AdvSearch.Name = "Button_AdvSearch";
+            this.Button_AdvSearch.Size = new System.Drawing.Size(23, 23);
+            this.Button_AdvSearch.TabIndex = 3;
+            this.SearchTip.SetToolTip(this.Button_AdvSearch, "Advanced Search");
+            this.Button_AdvSearch.UseVisualStyleBackColor = false;
+            this.Button_AdvSearch.Click += new System.EventHandler(this.Button_AdvSearch_Click);
             // 
             // DeckBuilder
             // 
@@ -414,7 +420,7 @@
             this.Controls.Add(this.pictureBox_Info);
             this.Controls.Add(this.label_G);
             this.Controls.Add(this.listBox_G);
-            this.Controls.Add(this.S);
+            this.Controls.Add(this.label_Trigger);
             this.Controls.Add(this.listBox_Trigger);
             this.Controls.Add(this.label_Normal);
             this.Controls.Add(this.MainMenu);
@@ -423,14 +429,16 @@
             this.Controls.Add(this.textBox_SetSearch);
             this.Controls.Add(this.textBox_NameSearch);
             this.Controls.Add(this.listBox_Normal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(906, 457);
             this.Name = "DeckBuilder";
             this.Text = "Cray Simulator";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).EndInit();
             this.DeckMenuStrip.ResumeLayout(false);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.SearchBoxStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,7 +455,7 @@
         private System.Windows.Forms.ListBox listBox_G;
         private System.Windows.Forms.ContextMenuStrip DeckMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem removeToolStrip;
-        private System.Windows.Forms.Label S;
+        private System.Windows.Forms.Label label_Trigger;
         private System.Windows.Forms.ListBox listBox_Trigger;
         private System.Windows.Forms.Label label_Normal;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
