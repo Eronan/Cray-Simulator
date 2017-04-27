@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -65,6 +66,42 @@ namespace Cray_Simulator
         }
     }
 
+    public static class ImageConverter
+    {
+        public static Bitmap ToBitmap(string s)
+        {
+            try
+            {
+                Image img = null;
+                byte[] bitmapBytes = Convert.FromBase64String(s);
+                using (MemoryStream memoryStream = new MemoryStream(bitmapBytes))
+                {
+                    img = Image.FromStream(memoryStream);
+                }
+
+                return img as Bitmap;
+            }
+            catch { return null; }
+        }
+
+        public static string ToString(Bitmap image)
+        {
+            try
+            {
+                string bitmapString = null;
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    image.Save(memoryStream, ImageFormat.Png);
+                    byte[] bitmapBytes = memoryStream.GetBuffer();
+                    bitmapString = Convert.ToBase64String(bitmapBytes, Base64FormattingOptions.InsertLineBreaks);
+                }
+
+                return bitmapString;
+            }
+            catch { return null; }
+        }
+    }
+
     public class Card
     {
         //Editable Values
@@ -104,7 +141,7 @@ namespace Cray_Simulator
             _grade = Convert.ToInt32(dr["grade"]);
             _origPower = Convert.ToInt32(dr["power"]);
             _critical = Convert.ToInt32(dr["critical"]);
-            try { _origShield = Convert.ToInt32(dr["power"]); }
+            try { _origShield = Convert.ToInt32(dr["shield"]); }
             catch { _origShield = 0; }
 
             //Set Power and Shield
@@ -130,7 +167,7 @@ namespace Cray_Simulator
                 catch (FileNotFoundException)
                 {
                     //Create New Card
-                    cardImage = new Bitmap(/*Sleeves*/Properties.Resources.Icon_Search);
+                    cardImage = new Bitmap(ImageConverter.ToBitmap(Properties.Settings.Default.GSleeve));
                 }
                 catch (Exception ex) { Console.WriteLine(ex.Message); }
 
@@ -167,6 +204,11 @@ namespace Cray_Simulator
             get { return _name; }
         }
 
+        public Bitmap OrigImage
+        {
+            get { return cardImage; }
+        }
+
         public Bitmap Image
         {
             get
@@ -174,6 +216,11 @@ namespace Cray_Simulator
                 if (_target) return redImage;
                 else return cardImage;
             }
+        }
+
+        public Bitmap RedImage
+        {
+            get { return redImage; }
         }
 
         public unitType Unit
@@ -269,10 +316,73 @@ namespace Cray_Simulator
             get { return _abilities.ToUpper().Contains("[CONT]:SENTINEL"); }
         }
 
+        public bool FaceUp
+        {
+            get { return _faceup; }
+            set { _faceup = value; }
+        }
+
+        public bool TurnOver()
+        {
+            return _faceup = !_faceup;
+        }
+
+        public bool Rested
+        {
+            get { return _rest; }
+            set { _rest = value; }
+        }
+
+        public bool RestStand()
+        {
+            return _rest = !_rest;
+        }
+
+        public bool Targetted
+        {
+            get { return _target; }
+        }
+
+        public bool Target()
+        {
+            return _target = !_target;
+        }
+
         public string Location
         {
             get { return _location; }
             set { _location = value; }
+        }
+
+        public void Reset()
+        {
+            //Set Value based on Location (Rest + Face Up)
+            string str = _location.Split('-')[0];
+            switch (str)
+            {
+                case "Deck":
+                case "Hand":
+                    _faceup = false;
+                    _rest = false;
+                    break;
+                case "Bind":
+                case "G Zone":
+                    _rest = false;
+                    break;
+                case "Guardian":
+                    _faceup = true;
+                    _rest = true;
+                    break;
+                default:
+                    _faceup = true;
+                    _rest = false;
+                    break;
+            }
+
+            //Reset Other Values
+            _power = _origPower;
+            _shield = _origShield;
+            _target = false;
         }
 
         public KeyValuePair<string, string> KeyValuePair
@@ -284,6 +394,7 @@ namespace Cray_Simulator
         {
             return _abilities.Contains(s.ToUpper());
         }
+
 
         public string InformationText
         {

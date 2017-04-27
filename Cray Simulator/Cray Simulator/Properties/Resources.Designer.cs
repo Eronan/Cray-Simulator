@@ -63,9 +63,39 @@ namespace Cray_Simulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cray_Simulator_Loaded_Playmat {
+            get {
+                object obj = ResourceManager.GetObject("Cray Simulator Loaded Playmat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap G_Unit_Sleeve_Grey {
+            get {
+                object obj = ResourceManager.GetObject("G Unit Sleeve Grey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Search {
             get {
                 object obj = ResourceManager.GetObject("Icon_Search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sleeve_Blue {
+            get {
+                object obj = ResourceManager.GetObject("Sleeve Blue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

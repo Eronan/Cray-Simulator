@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,14 +16,16 @@ namespace Cray_Simulator
         //Data
         DataTable allCards;
         Dictionary<string, string> cardDictionary = new Dictionary<string, string>();
-        Dictionary<string, int> restrictList = new Dictionary<string, int>();
+        Dictionary<string, int> restrictionList = new Dictionary<string, int>();
         Dictionary<string, int> effectRestrict = new Dictionary<string, int>();
-
-        //List Information
+        List<string> BannedSVG = new List<string>();
         List<KeyValuePair<string, string>> list_Searched = new List<KeyValuePair<string, string>>();
+
+        //Deck Information
         List<KeyValuePair<string, string>> list_NormalUnits = new List<KeyValuePair<string, string>>();
         List<KeyValuePair<string, string>> list_TriggerUnits = new List<KeyValuePair<string, string>>();
         List<KeyValuePair<string, string>> list_GUnits = new List<KeyValuePair<string, string>>();
+        string startVG = "";
 
         //Form Information
         Card selectedCard;
@@ -30,6 +33,8 @@ namespace Cray_Simulator
         List<string> Clans = new List<string>();
         List<string> Races = new List<string>();
         AdvSearch searchForm;
+        string saveLocation = null;
+        Properties.Settings currentSettings = Properties.Settings.Default;
 
         //Counting
         int sentinel = 0;
@@ -76,12 +81,459 @@ namespace Cray_Simulator
             list_Searched = cardDictionary.OrderBy(keyValue => keyValue.Value).ToList();
             listBox_Search.DataSource = list_Searched;
 
+            //Compile Restriction List
+            using (StreamReader reader = new StreamReader(@"Restrictions.txt"))
+            {
+                string allText = "";
+
+                string line = "";
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (!line.StartsWith("--")) allText += line;
+                }
+
+                string[] allLines = allText.Split(';');
+                foreach(string str in allLines)
+                {
+                    if (str.Length < 2) continue;
+
+                    //Remove first two characters
+                    string[] parameters = str.Substring(2, str.Length - 2).Split('|');
+
+                    switch (str[0])
+                    {
+                        case 'S':
+                            BannedSVG.Add(parameters[0]);
+                            break;
+                        case 'L':
+                            try { restrictionList.Add(parameters[0], int.Parse(parameters[1])); }
+                            catch (FormatException ex) { MessageBox.Show("Invalid Restriction."); Console.WriteLine(ex.Message); }
+                            break;
+                        case 'E':
+                            try { effectRestrict.Add(parameters[0], int.Parse(parameters[1])); }
+                            catch (FormatException ex) { MessageBox.Show("Invalid Restriction."); Console.WriteLine(ex.Message); }
+                            break;
+                    }
+                }
+            }
+        }
+
+
+        private void DeckBuilder_Load(object sender, EventArgs e)
+        {
             //Set Tabbed Control
             ActiveControl = listBox_Search;
 
-            //restrictList.Add("100% Orange", 2);
-            restrictList.Add("3 Apple Sisters", 1);
+            //Load Previous Deck
+            if (currentSettings.LoadPrevDeck && currentSettings.PrevDeck.Length > 0)
+            {
+                OpenFromFile(currentSettings.PrevDeck);
+                saveLocation = currentSettings.PrevDeck;
+            }
+            else if (currentSettings.Deck_Default.Length > 0)
+            {
+                OpenFromFile(currentSettings.Deck_Default);
+                saveLocation = currentSettings.Deck_Default;
+            }
+        }
 
+        private void FileMenu_New_Click(object sender, EventArgs e)
+        {
+            //Clear All Information
+            saveLocation = null;
+
+            list_NormalUnits.Clear();
+            list_TriggerUnits.Clear();
+            list_GUnits.Clear();
+
+            listBox_Normal.DataSource = list_NormalUnits.ToList();
+            listBox_Trigger.DataSource = list_TriggerUnits.ToList();
+            listBox_G.DataSource = list_GUnits.ToList();
+
+            //Counting Variables
+            sentinel = 0;
+            g0 = 0;
+            g1 = 0;
+            g2 = 0;
+            g3 = 0;
+            g4 = 0;
+            heal = 0;
+            critical = 0;
+            stand = 0;
+            draw = 0;
+            stride = 0;
+            ggrd = 0;
+            listedRestrict = 0;
+        }
+
+        private void FileMenu_Open_Click(object sender, EventArgs e)
+        {
+            if (openFile_Deck.ShowDialog(this) == DialogResult.OK)
+            {
+                FileMenu_New_Click(sender, e);
+
+                //Load Deck
+                saveLocation = openFile_Deck.FileName;
+                OpenFromFile(saveLocation);
+            }
+        }
+
+        private void OpenFromFile(string fileLocation)
+        {
+            currentSettings.PrevDeck = fileLocation;
+            currentSettings.Save();
+
+            using (StreamReader reader = new StreamReader(fileLocation))
+            {
+                string allText = "";
+                string line = "";
+
+                if (fileLocation.EndsWith(".cra"))
+                {
+                    //Remove Commented Lines
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if (!line.StartsWith("--")) allText += line;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Cray Simulator cannot open this file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int countLines = 0;
+                //Split among Lines
+                foreach (string readLine in allText.Split(';'))
+                {
+                    //Set Starting Vanguard
+                    if (countLines == 3)
+                    {
+                        startVG = readLine;
+                        break;
+                    }
+
+                    //Add Cards
+                    foreach (string card in readLine.Split(','))
+                    {
+                        DataRow[] drArray = allCards.Select("cardID='" + card + "'");
+                        if (drArray.Length > 0)
+                        {
+                            AddCard(new Card(drArray[0], false));
+                        }
+                        else if (card.Length > 0) MessageBox.Show("Cray Simulator could not find card: " + card + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    countLines++;
+                }
+
+                list_NormalUnits = list_NormalUnits.OrderBy(keyValue => keyValue.Value).ToList();
+                list_TriggerUnits = list_TriggerUnits.OrderBy(keyValue => keyValue.Value).ToList();
+                list_GUnits = list_GUnits.OrderBy(keyValue => keyValue.Value).ToList();
+
+                listBox_Normal.DataSource = list_NormalUnits;
+                listBox_Trigger.DataSource = list_TriggerUnits;
+                listBox_G.DataSource = list_GUnits;
+
+                reader.Close();
+            }
+        }
+
+        private void FileMenu_Save_Click(object sender, EventArgs e)
+        {
+            if (saveLocation == null && saveFile_Deck.ShowDialog(this) == DialogResult.OK)
+            {
+                SaveToFile(saveFile_Deck.FileName);
+                saveLocation = saveFile_Deck.FileName;
+            }
+            else if (saveLocation != null)
+            {
+                SaveToFile(saveLocation);
+            }
+        }
+
+        private void FileMenu_SaveAs_Click(object sender, EventArgs e)
+        {
+            if (saveFile_Deck.ShowDialog(this) == DialogResult.OK)
+            {
+                SaveToFile(saveFile_Deck.FileName);
+                saveLocation = saveFile_Deck.FileName;
+            }
+        }
+
+        private void SaveToFile(string fileLocation)
+        {
+            //Save Files
+            currentSettings.PrevDeck = fileLocation;
+            currentSettings.Save();
+
+            using (StreamWriter writer = new StreamWriter(fileLocation, false))
+            {
+                string outputFile = "--Normal Units" + Environment.NewLine;
+
+                foreach (KeyValuePair<string, string> keyValue in list_NormalUnits)
+                {
+                    outputFile += keyValue.Key + ',';
+                }
+
+                outputFile = outputFile.TrimEnd(',');
+                outputFile += ';' + Environment.NewLine + "--Trigger Units" + Environment.NewLine;
+
+                foreach (KeyValuePair<string, string> keyValue in list_TriggerUnits)
+                {
+                    outputFile += keyValue.Key + ',';
+                }
+
+                outputFile = outputFile.TrimEnd(',');
+                outputFile += ';' + Environment.NewLine + "--G Units" + Environment.NewLine;
+
+                foreach (KeyValuePair<string, string> keyValue in list_GUnits)
+                {
+                    outputFile += keyValue.Key + ',';
+                }
+
+                outputFile = outputFile.TrimEnd(',');
+                outputFile += ';' + (startVG != null && startVG.Length > 0 ? Environment.NewLine + "--Starting Vanguard" + Environment.NewLine + startVG + ';' : "");
+
+                writer.Write(outputFile);
+
+                writer.Close();
+            }
+        }
+
+        private void FileMenu_Export_Click(object sender, EventArgs e)
+        {
+            string grade0 = "";
+            string grade1 = "";
+            string grade2 = "";
+            string grade3 = "";
+            string grade4 = "";
+            string gZone = "";
+            int g0Count = 0;
+            int g1Count = 0;
+            int g2Count = 0;
+            int g3Count = 0;
+            int g4Count = 0;
+
+            //Normal Units
+            List<string> stringList = new List<string>();
+            foreach (KeyValuePair<string, string> normalCard in list_NormalUnits)
+            {
+                if (!stringList.Contains(normalCard.Key))
+                {
+                    Card tempCard = new Card(allCards.Select("cardID='" + normalCard.Key + "'")[0], false);
+                    int count = this.list_NormalUnits.Count(value => value.Key == tempCard.CardID);
+                    switch (tempCard.Grade)
+                    {
+                        case 0:
+                            grade0 = grade0 + tempCard.Name + " x" + count + Environment.NewLine;
+                            g0Count += count;
+                            break;
+                        case 1:
+                            grade1 = grade1 + tempCard.Name + " x" + count + Environment.NewLine;
+                            g1Count += count;
+                            break;
+                        case 2:
+                            grade2 = grade2 + tempCard.Name + " x" + count + Environment.NewLine;
+                            g2Count += count;
+                            break;
+                        case 3:
+                            grade3 = grade3 + tempCard.Name + " x" + count + Environment.NewLine;
+                            g3Count += count;
+                            break;
+                        case 4:
+                            grade4 = grade4 + tempCard.Name + " x" + count + Environment.NewLine;
+                            g4Count += count;
+                            break;
+                    }
+                    stringList.Add(normalCard.Key);
+                }
+            }
+            stringList.Clear();
+
+            //Trigger Units
+            foreach (KeyValuePair<string, string> triggerCard in list_TriggerUnits)
+            {
+                if (!stringList.Contains(triggerCard.Key))
+                {
+                    Card tempCard = new Card(allCards.Select("cardID='" + triggerCard.Key + "'")[0], false);
+                    int count = list_TriggerUnits.Count(value => value.Key == tempCard.CardID);
+                    switch (tempCard.Grade)
+                    {
+                        case 0:
+                            grade0 = grade0 + tempCard.Name + " x" + count + " (" + tempCard.Trigger + ")" + Environment.NewLine;
+                            g0Count += count;
+                            break;
+                        case 1:
+                            grade1 = grade1 + tempCard.Name + " x" + count + " (" + tempCard.Trigger + ")" + Environment.NewLine;
+                            g1Count += count;
+                            break;
+                        case 2:
+                            grade2 = grade2 + tempCard.Name + " x" + count + " (" + tempCard.Trigger + ")" + Environment.NewLine;
+                            g2Count += count;
+                            break;
+                        case 3:
+                            grade3 = grade3 + tempCard.Name + " x" + count + " (" + tempCard.Trigger + ")" + Environment.NewLine;
+                            g3Count += count;
+                            break;
+                        case 4:
+                            grade4 = grade4 + tempCard.Name + " x" + count + " (" + tempCard.Trigger + ")" + Environment.NewLine;
+                            g4Count += count;
+                            break;
+                    }
+                    stringList.Add(triggerCard.Key);
+                }
+            }
+            stringList.Clear();
+
+            //G Units
+            foreach (KeyValuePair<string, string> gCard in list_GUnits)
+            {
+                if (!stringList.Contains(gCard.Key))
+                {
+                    Card tempCard = new Card(allCards.Select("cardID='" + gCard.Key + "'")[0], false);
+                    gZone = gZone + tempCard.Name + " x" + list_GUnits.Count(value => value.Key == tempCard.CardID) + Environment.NewLine;
+                    stringList.Add(gCard.Key);
+                }
+            }
+
+            //Initialize Variables
+            string[] strArray = new string[6];
+
+            //Create Strings
+            //Grade 0
+            string g0String;
+            if (grade0.Length <= 0) g0String = "";
+            else g0String = "Grade 0 (" + g0Count + ")" + Environment.NewLine + grade0 + Environment.NewLine;
+            strArray[0] = g0String;
+
+            //Grade 1
+            string g1String;
+            if (grade1.Length <= 0) g1String = "";
+            else g1String = "Grade 1 (" + g1Count + ")" + Environment.NewLine + grade1 + Environment.NewLine;
+            strArray[1] = g1String;
+
+            //Grade 2
+            string g2String;
+            if (grade2.Length <= 0) g2String = "";
+            else g2String = "Grade 2 (" + g2Count + ")" + Environment.NewLine + grade2 + Environment.NewLine;
+            strArray[2] = g2String;
+
+            //Grade 3
+            string g3String;
+            if (grade3.Length <= 0) g3String = "";
+            else g3String = "Grade 3 (" + g3Count + ")" + Environment.NewLine + grade3 + Environment.NewLine;
+            strArray[3] = g3String;
+
+            //Grade 4
+            string g4String;
+            if (grade4.Length <= 0) g4String = "";
+            else g4String = "Grade 4 (" + g4Count + ")" + Environment.NewLine + grade4 + Environment.NewLine;
+            strArray[4] = g4String;
+
+            //G Units
+            string gUnitString;
+            if (gZone.Length <= 0) gUnitString = "";
+            else gUnitString = "G Zone (" + this.list_GUnits.Count + ")" + Environment.NewLine + gZone;
+            strArray[5] = gUnitString;
+
+            LargeTextBoxDialog(string.Concat(strArray), "View Deck");
+        }
+
+        private void FightMenu_Test_Click(object sender, EventArgs e)
+        {
+            List<Card> deckCards = new List<Card>();
+            
+            foreach (KeyValuePair<string, string> keyValue in list_NormalUnits)
+            {
+                DataRow[] drArray = allCards.Select("cardID='" + keyValue.Key + "'");
+                if (drArray.Length > 0) deckCards.Add(new Card(drArray[0]));
+            }
+
+            foreach (KeyValuePair<string, string> keyValue in list_TriggerUnits)
+            {
+                DataRow[] drArray = allCards.Select("cardID='" + keyValue.Key + "'");
+                if (drArray.Length > 0) deckCards.Add(new Card(drArray[0]));
+            }
+
+            foreach (KeyValuePair<string, string> keyValue in list_GUnits)
+            {
+                DataRow[] drArray = allCards.Select("cardID='" + keyValue.Key + "'");
+                if (drArray.Length > 0) deckCards.Add(new Card(drArray[0]));
+            }
+
+            Battlefield battleForm = new Battlefield(deckCards, startVG);
+            this.Visible = false;
+            battleForm.ShowDialog(this);
+            this.Visible = true;
+
+            //Dispose BattleForm
+            if (!battleForm.IsDisposed) battleForm.Dispose();
+        }
+
+        private void FightMenu_Listen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FightMenu_Connect_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HelpMenu_About_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HelpMenu_Settings_Click(object sender, EventArgs e)
+        {
+            Preferences prefForm = new Preferences();
+            //Save Values
+            if (prefForm.ShowDialog(this) == DialogResult.OK) prefForm.SetValues();
+        }
+
+        private void HelpMenu_ImageClean_Click(object sender, EventArgs e)
+        {
+            List<string> DeletedCards = new List<string>();
+
+            foreach (string fileLocation in Directory.GetFiles("Images/"))
+            {
+                //Remove Extension
+                string checkString = fileLocation.Substring(0, fileLocation.LastIndexOf('.'));
+
+                //Get Only File Name
+                int subStart = checkString.LastIndexOf('/') + 1;
+                int subLength = checkString.Length - subStart;
+                checkString = checkString.Substring(subStart, subLength);
+
+                bool found = false;
+
+                foreach (KeyValuePair<string, string> keyValue in cardDictionary)
+                {
+                    if (keyValue.Key.Replace('/', '-') == checkString)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    DeletedCards.Add(checkString);
+                    File.Delete(fileLocation);
+                }
+            }
+
+            MessageBox.Show(string.Join(", ", DeletedCards) + " were deleted.", "Deleted", MessageBoxButtons.OK);
+
+            List<string> MissingCards = new List<string>();
+            foreach (KeyValuePair<string, string> keyValue in cardDictionary)
+            {
+                if (!File.Exists("Images/" + keyValue.Key.Replace('/', '-') + ".jpg")) MissingCards.Add(keyValue.Value);
+            }
+
+            MessageBox.Show(string.Join(", ", MissingCards) + " need Images.", "Need Image", MessageBoxButtons.OK);
         }
 
         private void listBox_SelectedValueChanged(object sender, EventArgs e)
@@ -204,7 +656,7 @@ namespace Cray_Simulator
             switch (crd.Unit)
             {
                 case unitType.Normal:
-                    if (CheckValid(crd, list_NormalUnits))
+                    if (list_NormalUnits.Count < 34 && CheckValid(crd, list_NormalUnits))
                     {
                         list_NormalUnits.Add(crd.KeyValuePair);
                         Increment(crd);
@@ -212,7 +664,7 @@ namespace Cray_Simulator
                     }
                     break;
                 case unitType.Trigger:
-                    if (CheckValid(crd, list_TriggerUnits))
+                    if (list_TriggerUnits.Count < 16 && CheckValid(crd, list_TriggerUnits))
                     {
                         list_TriggerUnits.Add(crd.KeyValuePair);
                         Increment(crd);
@@ -220,7 +672,7 @@ namespace Cray_Simulator
                     }
                     break;
                 case unitType.G:
-                    if (CheckValid(crd, list_GUnits))
+                    if (list_GUnits.Count < 16 && CheckValid(crd, list_GUnits))
                     {
                         list_GUnits.Add(crd.KeyValuePair);
                         Increment(crd);
@@ -244,7 +696,7 @@ namespace Cray_Simulator
 
             foreach (KeyValuePair<string, string> keyValue in list) if (keyValue.Value == crd.Name) count++;
 
-            if (restrictList.TryGetValue(crd.Name, out restrictValue)) return count < restrictValue && listedRestrict < 2 && sntCount < 4 && hlCount < 4;
+            if (restrictionList.TryGetValue(crd.Name, out restrictValue)) return count < restrictValue && listedRestrict < 2 && sntCount < 4 && hlCount < 4;
             else if (effectRestrict.TryGetValue(crd.Name, out restrictValue)) Console.WriteLine("Effect Restricted");
             else restrictValue = 4;
 
@@ -298,10 +750,10 @@ namespace Cray_Simulator
 
             //Restricted
             int restrictValue = 0;
-            if (restrictList.TryGetValue(crd.Name, out restrictValue)) listedRestrict++;
+            if (restrictionList.TryGetValue(crd.Name, out restrictValue)) listedRestrict++;
 
             //Count Text
-            label_Counts.Text = "Deck: " + (list_NormalUnits.Count + list_TriggerUnits.Count + list_GUnits.Count)
+            label_Counts.Text = "Deck: " + (list_NormalUnits.Count + list_TriggerUnits.Count)
                 + Environment.NewLine + "Snt: " + sentinel
                 + Environment.NewLine + "G0: " + g0
                 + Environment.NewLine + "G1: " + g1
@@ -393,10 +845,10 @@ namespace Cray_Simulator
 
             //Restricted
             int restrictValue = 0;
-            if (restrictList.TryGetValue(crd.Name, out restrictValue)) listedRestrict--;
+            if (restrictionList.TryGetValue(crd.Name, out restrictValue)) listedRestrict--;
 
             //Count Text
-            label_Counts.Text = "Deck: " + (list_NormalUnits.Count + list_TriggerUnits.Count + list_GUnits.Count)
+            label_Counts.Text = "Deck: " + (list_NormalUnits.Count + list_TriggerUnits.Count)
                 + Environment.NewLine + "Snt: " + sentinel
                 + Environment.NewLine + "G0: " + g0
                 + Environment.NewLine + "G1: " + g1
@@ -478,6 +930,50 @@ namespace Cray_Simulator
             //Update Information
             pictureBox_Info.Image = selectedCard.Image;
             richTextBox_Info.Text = selectedCard.InformationText;
+        }
+
+        private void DeckMenu_SVG_Click(object sender, EventArgs e)
+        {
+            if (selectedCard.Grade == 0 && !BannedSVG.Contains(selectedCard.Name))
+            {
+                startVG = selectedCard.CardID;
+                MessageBox.Show(selectedCard.Name + " was selected as the Starting Vanguard!", "Success", MessageBoxButtons.OK);
+            }
+            else MessageBox.Show(selectedCard.Name + " cannot be a starting vanguard.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void LargeTextBoxDialog(string information, string title)
+        {
+            Size size = new System.Drawing.Size(344, 433);
+            Form inputBox = new Form();
+            inputBox.Text = title;
+            inputBox.ClientSize = size;
+            inputBox.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+
+            //Rich Text Box
+            RichTextBox richtxtbox = new RichTextBox();
+            richtxtbox.Location = new System.Drawing.Point(5, 9);
+            richtxtbox.Name = "Text Box";
+            richtxtbox.Size = new System.Drawing.Size(334, 390);
+            richtxtbox.TabIndex = 0;
+            richtxtbox.Text = information;
+            richtxtbox.ReadOnly = true;
+            richtxtbox.BackColor = Color.White;
+            // OKButton
+            Button OKButton = new Button();
+            OKButton.Location = new System.Drawing.Point(134, 400);
+            OKButton.Name = "OKButton";
+            OKButton.Size = new System.Drawing.Size(75, 23);
+            OKButton.TabIndex = 1;
+            OKButton.Text = "OK";
+            OKButton.UseVisualStyleBackColor = true;
+            OKButton.DialogResult = DialogResult.OK;
+
+            //Add Controls
+            inputBox.Controls.Add(OKButton);
+            inputBox.Controls.Add(richtxtbox);
+
+            inputBox.ShowDialog(this);
         }
     }
 }
