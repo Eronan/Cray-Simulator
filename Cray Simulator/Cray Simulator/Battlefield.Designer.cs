@@ -144,6 +144,36 @@
             this.RG_GPowerMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
             this.RG_GMenu_Rest = new System.Windows.Forms.ToolStripMenuItem();
             this.RG_GMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.GuardMenu_RetireAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardMenu_Bind = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardMenu_ShieldMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardShieldMenu_Add5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardShieldMenu_Change = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardShieldMenu_Minus5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardShieldMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardMenu_ShieldAllMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardShieldAllMenu_Add5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeShieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardShieldAllMenu_Minus5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardShieldAllMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardMenu_TopDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardMenu_BottomDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuardMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.G_GuardMenu_RetireAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardMenu_GZone = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardMenu_ShieldAllMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardAllShieldMenu_Add5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardAllShieldMenu_Change = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardAllShieldMenu_Minus5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardAllShieldMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardMenu_ShieldMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardShieldMenu_Add5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardShieldMenu_Change = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardShieldMenu_Minus5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardShieldMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox_Chat.SuspendLayout();
             this.groupBox_Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).BeginInit();
@@ -169,6 +199,8 @@
             this.VG_GMenu.SuspendLayout();
             this.LockMenu.SuspendLayout();
             this.RG_GMenu.SuspendLayout();
+            this.GuardMenu.SuspendLayout();
+            this.G_GuardMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_Chat
@@ -176,7 +208,7 @@
             this.groupBox_Chat.Controls.Add(this.button_Check);
             this.groupBox_Chat.Controls.Add(this.textBox_ChatInput);
             this.groupBox_Chat.Controls.Add(this.richTextBox_Chat);
-            this.groupBox_Chat.Location = new System.Drawing.Point(499, 377);
+            this.groupBox_Chat.Location = new System.Drawing.Point(499, 378);
             this.groupBox_Chat.Name = "groupBox_Chat";
             this.groupBox_Chat.Size = new System.Drawing.Size(295, 358);
             this.groupBox_Chat.TabIndex = 9;
@@ -219,7 +251,7 @@
             this.groupBox_Info.Controls.Add(this.button_OppBind);
             this.groupBox_Info.Controls.Add(this.pictureBox_Info);
             this.groupBox_Info.Controls.Add(this.richTextBox_Info);
-            this.groupBox_Info.Location = new System.Drawing.Point(499, -3);
+            this.groupBox_Info.Location = new System.Drawing.Point(499, -2);
             this.groupBox_Info.Name = "groupBox_Info";
             this.groupBox_Info.Size = new System.Drawing.Size(295, 382);
             this.groupBox_Info.TabIndex = 10;
@@ -1152,20 +1184,20 @@
             this.RG_GMenu_Rest,
             this.RG_GMenu_Target});
             this.RG_GMenu.Name = "RGStrip";
-            this.RG_GMenu.Size = new System.Drawing.Size(153, 136);
+            this.RG_GMenu.Size = new System.Drawing.Size(131, 114);
             this.RG_GMenu.Opening += new System.ComponentModel.CancelEventHandler(this.RGMenu_Opening);
             // 
             // RG_GMenu_Attack
             // 
             this.RG_GMenu_Attack.Name = "RG_GMenu_Attack";
-            this.RG_GMenu_Attack.Size = new System.Drawing.Size(152, 22);
+            this.RG_GMenu_Attack.Size = new System.Drawing.Size(130, 22);
             this.RG_GMenu_Attack.Text = "Attack";
             this.RG_GMenu_Attack.Click += new System.EventHandler(this.RGMenu_Attack_Click);
             // 
             // RG_GMenu_GZone
             // 
             this.RG_GMenu_GZone.Name = "RG_GMenu_GZone";
-            this.RG_GMenu_GZone.Size = new System.Drawing.Size(152, 22);
+            this.RG_GMenu_GZone.Size = new System.Drawing.Size(130, 22);
             this.RG_GMenu_GZone.Text = "To G Zone";
             this.RG_GMenu_GZone.Click += new System.EventHandler(this.RG_GMenu_GZone_Click);
             // 
@@ -1177,44 +1209,282 @@
             this.RG_GPowerMenu_Minus5000,
             this.RG_GPowerMenu_Reset});
             this.RG_GMenu_PowerMenu.Name = "RG_GMenu_PowerMenu";
-            this.RG_GMenu_PowerMenu.Size = new System.Drawing.Size(152, 22);
+            this.RG_GMenu_PowerMenu.Size = new System.Drawing.Size(130, 22);
             this.RG_GMenu_PowerMenu.Text = "Edit Power";
             // 
             // RG_GPowerMenu_Add5000
             // 
             this.RG_GPowerMenu_Add5000.Name = "RG_GPowerMenu_Add5000";
-            this.RG_GPowerMenu_Add5000.Size = new System.Drawing.Size(152, 22);
+            this.RG_GPowerMenu_Add5000.Size = new System.Drawing.Size(151, 22);
             this.RG_GPowerMenu_Add5000.Text = "+5000 Power";
             // 
             // RG_GPowerMenu_Change
             // 
             this.RG_GPowerMenu_Change.Name = "RG_GPowerMenu_Change";
-            this.RG_GPowerMenu_Change.Size = new System.Drawing.Size(152, 22);
+            this.RG_GPowerMenu_Change.Size = new System.Drawing.Size(151, 22);
             this.RG_GPowerMenu_Change.Text = "Change Power";
             // 
             // RG_GPowerMenu_Minus5000
             // 
             this.RG_GPowerMenu_Minus5000.Name = "RG_GPowerMenu_Minus5000";
-            this.RG_GPowerMenu_Minus5000.Size = new System.Drawing.Size(152, 22);
+            this.RG_GPowerMenu_Minus5000.Size = new System.Drawing.Size(151, 22);
             this.RG_GPowerMenu_Minus5000.Text = "-5000 Power";
             // 
             // RG_GPowerMenu_Reset
             // 
             this.RG_GPowerMenu_Reset.Name = "RG_GPowerMenu_Reset";
-            this.RG_GPowerMenu_Reset.Size = new System.Drawing.Size(152, 22);
+            this.RG_GPowerMenu_Reset.Size = new System.Drawing.Size(151, 22);
             this.RG_GPowerMenu_Reset.Text = "Reset Power";
             // 
             // RG_GMenu_Rest
             // 
             this.RG_GMenu_Rest.Name = "RG_GMenu_Rest";
-            this.RG_GMenu_Rest.Size = new System.Drawing.Size(152, 22);
+            this.RG_GMenu_Rest.Size = new System.Drawing.Size(130, 22);
             this.RG_GMenu_Rest.Text = "[Rest]";
             // 
             // RG_GMenu_Target
             // 
             this.RG_GMenu_Target.Name = "RG_GMenu_Target";
-            this.RG_GMenu_Target.Size = new System.Drawing.Size(152, 22);
+            this.RG_GMenu_Target.Size = new System.Drawing.Size(130, 22);
             this.RG_GMenu_Target.Text = "Target";
+            // 
+            // GuardMenu
+            // 
+            this.GuardMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.GuardMenu_RetireAll,
+            this.GuardMenu_Bind,
+            this.GuardMenu_ShieldMenu,
+            this.GuardMenu_ShieldAllMenu,
+            this.GuardMenu_TopDeck,
+            this.GuardMenu_BottomDeck,
+            this.GuardMenu_Target});
+            this.GuardMenu.Name = "GCircleStrip";
+            this.GuardMenu.Size = new System.Drawing.Size(147, 158);
+            this.GuardMenu.Opening += new System.ComponentModel.CancelEventHandler(this.GuardMenu_Opening);
+            // 
+            // GuardMenu_RetireAll
+            // 
+            this.GuardMenu_RetireAll.Name = "GuardMenu_RetireAll";
+            this.GuardMenu_RetireAll.Size = new System.Drawing.Size(146, 22);
+            this.GuardMenu_RetireAll.Text = "Retire All";
+            this.GuardMenu_RetireAll.Click += new System.EventHandler(this.GuardMenu_RetireAll_Click);
+            // 
+            // GuardMenu_Bind
+            // 
+            this.GuardMenu_Bind.Name = "GuardMenu_Bind";
+            this.GuardMenu_Bind.Size = new System.Drawing.Size(146, 22);
+            this.GuardMenu_Bind.Text = "Bind";
+            this.GuardMenu_Bind.Click += new System.EventHandler(this.GuardMenu_Bind_Click);
+            // 
+            // GuardMenu_ShieldMenu
+            // 
+            this.GuardMenu_ShieldMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.GuardShieldMenu_Add5000,
+            this.GuardShieldMenu_Change,
+            this.GuardShieldMenu_Minus5000,
+            this.GuardShieldMenu_Reset});
+            this.GuardMenu_ShieldMenu.Name = "GuardMenu_ShieldMenu";
+            this.GuardMenu_ShieldMenu.Size = new System.Drawing.Size(146, 22);
+            this.GuardMenu_ShieldMenu.Text = "Edit Shield";
+            // 
+            // GuardShieldMenu_Add5000
+            // 
+            this.GuardShieldMenu_Add5000.Name = "GuardShieldMenu_Add5000";
+            this.GuardShieldMenu_Add5000.Size = new System.Drawing.Size(152, 22);
+            this.GuardShieldMenu_Add5000.Text = "+5000 Shield";
+            this.GuardShieldMenu_Add5000.Click += new System.EventHandler(this.ShieldMenu_Add5000_Click);
+            // 
+            // GuardShieldMenu_Change
+            // 
+            this.GuardShieldMenu_Change.Name = "GuardShieldMenu_Change";
+            this.GuardShieldMenu_Change.Size = new System.Drawing.Size(152, 22);
+            this.GuardShieldMenu_Change.Text = "Change Shield";
+            this.GuardShieldMenu_Change.Click += new System.EventHandler(this.ShieldMenu_Change_Click);
+            // 
+            // GuardShieldMenu_Minus5000
+            // 
+            this.GuardShieldMenu_Minus5000.Name = "GuardShieldMenu_Minus5000";
+            this.GuardShieldMenu_Minus5000.Size = new System.Drawing.Size(152, 22);
+            this.GuardShieldMenu_Minus5000.Text = "-5000 Shield";
+            this.GuardShieldMenu_Minus5000.Click += new System.EventHandler(this.ShieldMenu_Minus5000_Click);
+            // 
+            // GuardShieldMenu_Reset
+            // 
+            this.GuardShieldMenu_Reset.Name = "GuardShieldMenu_Reset";
+            this.GuardShieldMenu_Reset.Size = new System.Drawing.Size(152, 22);
+            this.GuardShieldMenu_Reset.Text = "Reset Shield";
+            this.GuardShieldMenu_Reset.Click += new System.EventHandler(this.ShieldMenu_Reset_Click);
+            // 
+            // GuardMenu_ShieldAllMenu
+            // 
+            this.GuardMenu_ShieldAllMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.GuardShieldAllMenu_Add5000,
+            this.changeShieldToolStripMenuItem,
+            this.GuardShieldAllMenu_Minus5000,
+            this.GuardShieldAllMenu_Reset});
+            this.GuardMenu_ShieldAllMenu.Name = "GuardMenu_ShieldAllMenu";
+            this.GuardMenu_ShieldAllMenu.Size = new System.Drawing.Size(146, 22);
+            this.GuardMenu_ShieldAllMenu.Text = "Edit All Shield";
+            // 
+            // GuardShieldAllMenu_Add5000
+            // 
+            this.GuardShieldAllMenu_Add5000.Name = "GuardShieldAllMenu_Add5000";
+            this.GuardShieldAllMenu_Add5000.Size = new System.Drawing.Size(167, 22);
+            this.GuardShieldAllMenu_Add5000.Text = "+5000 Shield";
+            this.GuardShieldAllMenu_Add5000.Click += new System.EventHandler(this.ShieldAllMenu_Add5000_Click);
+            // 
+            // changeShieldToolStripMenuItem
+            // 
+            this.changeShieldToolStripMenuItem.Name = "changeShieldToolStripMenuItem";
+            this.changeShieldToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.changeShieldToolStripMenuItem.Text = "Change All Shield";
+            this.changeShieldToolStripMenuItem.Click += new System.EventHandler(this.ShieldAllMenu_Change_Click);
+            // 
+            // GuardShieldAllMenu_Minus5000
+            // 
+            this.GuardShieldAllMenu_Minus5000.Name = "GuardShieldAllMenu_Minus5000";
+            this.GuardShieldAllMenu_Minus5000.Size = new System.Drawing.Size(167, 22);
+            this.GuardShieldAllMenu_Minus5000.Text = "-5000 Shield";
+            this.GuardShieldAllMenu_Minus5000.Click += new System.EventHandler(this.ShieldAllMenu_Minus5000_Click);
+            // 
+            // GuardShieldAllMenu_Reset
+            // 
+            this.GuardShieldAllMenu_Reset.Name = "GuardShieldAllMenu_Reset";
+            this.GuardShieldAllMenu_Reset.Size = new System.Drawing.Size(167, 22);
+            this.GuardShieldAllMenu_Reset.Text = "Reset All Shield";
+            this.GuardShieldAllMenu_Reset.Click += new System.EventHandler(this.ShieldAllMenu_Reset_Click);
+            // 
+            // GuardMenu_TopDeck
+            // 
+            this.GuardMenu_TopDeck.Name = "GuardMenu_TopDeck";
+            this.GuardMenu_TopDeck.Size = new System.Drawing.Size(146, 22);
+            this.GuardMenu_TopDeck.Text = "Top Deck";
+            this.GuardMenu_TopDeck.Click += new System.EventHandler(this.GuardMenu_TopDeck_Click);
+            // 
+            // GuardMenu_BottomDeck
+            // 
+            this.GuardMenu_BottomDeck.Name = "GuardMenu_BottomDeck";
+            this.GuardMenu_BottomDeck.Size = new System.Drawing.Size(146, 22);
+            this.GuardMenu_BottomDeck.Text = "Bottom Deck";
+            this.GuardMenu_BottomDeck.Click += new System.EventHandler(this.GuardMenu_BottomDeck_Click);
+            // 
+            // GuardMenu_Target
+            // 
+            this.GuardMenu_Target.Name = "GuardMenu_Target";
+            this.GuardMenu_Target.Size = new System.Drawing.Size(146, 22);
+            this.GuardMenu_Target.Text = "Target";
+            this.GuardMenu_Target.Click += new System.EventHandler(this.GuardMenu_Target_Click);
+            // 
+            // G_GuardMenu
+            // 
+            this.G_GuardMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.G_GuardMenu_RetireAll,
+            this.G_GuardMenu_ShieldMenu,
+            this.G_GuardMenu_ShieldAllMenu,
+            this.G_GuardMenu_GZone,
+            this.G_GuardMenu_Target});
+            this.G_GuardMenu.Name = "GCircleStrip";
+            this.G_GuardMenu.Size = new System.Drawing.Size(153, 136);
+            this.G_GuardMenu.Opening += new System.ComponentModel.CancelEventHandler(this.GuardMenu_Opening);
+            // 
+            // G_GuardMenu_RetireAll
+            // 
+            this.G_GuardMenu_RetireAll.Name = "G_GuardMenu_RetireAll";
+            this.G_GuardMenu_RetireAll.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardMenu_RetireAll.Text = "Retire All";
+            this.G_GuardMenu_RetireAll.Click += new System.EventHandler(this.GuardMenu_RetireAll_Click);
+            // 
+            // G_GuardMenu_GZone
+            // 
+            this.G_GuardMenu_GZone.Name = "G_GuardMenu_GZone";
+            this.G_GuardMenu_GZone.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardMenu_GZone.Text = "To G Zone";
+            this.G_GuardMenu_GZone.Click += new System.EventHandler(this.G_GuardMenu_GZone_Click);
+            // 
+            // G_GuardMenu_Target
+            // 
+            this.G_GuardMenu_Target.Name = "G_GuardMenu_Target";
+            this.G_GuardMenu_Target.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardMenu_Target.Text = "Target";
+            this.G_GuardMenu_Target.Click += new System.EventHandler(this.GuardMenu_Target_Click);
+            // 
+            // G_GuardMenu_ShieldAllMenu
+            // 
+            this.G_GuardMenu_ShieldAllMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.G_GuardAllShieldMenu_Add5000,
+            this.G_GuardAllShieldMenu_Change,
+            this.G_GuardAllShieldMenu_Minus5000,
+            this.G_GuardAllShieldMenu_Reset});
+            this.G_GuardMenu_ShieldAllMenu.Name = "G_GuardMenu_ShieldAllMenu";
+            this.G_GuardMenu_ShieldAllMenu.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardMenu_ShieldAllMenu.Text = "Edit All Shield";
+            // 
+            // G_GuardAllShieldMenu_Add5000
+            // 
+            this.G_GuardAllShieldMenu_Add5000.Name = "G_GuardAllShieldMenu_Add5000";
+            this.G_GuardAllShieldMenu_Add5000.Size = new System.Drawing.Size(167, 22);
+            this.G_GuardAllShieldMenu_Add5000.Text = "+5000 Shield";
+            this.G_GuardAllShieldMenu_Add5000.Click += new System.EventHandler(this.ShieldAllMenu_Add5000_Click);
+            // 
+            // G_GuardAllShieldMenu_Change
+            // 
+            this.G_GuardAllShieldMenu_Change.Name = "G_GuardAllShieldMenu_Change";
+            this.G_GuardAllShieldMenu_Change.Size = new System.Drawing.Size(167, 22);
+            this.G_GuardAllShieldMenu_Change.Text = "Change All Shield";
+            this.G_GuardAllShieldMenu_Change.Click += new System.EventHandler(this.ShieldAllMenu_Change_Click);
+            // 
+            // G_GuardAllShieldMenu_Minus5000
+            // 
+            this.G_GuardAllShieldMenu_Minus5000.Name = "G_GuardAllShieldMenu_Minus5000";
+            this.G_GuardAllShieldMenu_Minus5000.Size = new System.Drawing.Size(167, 22);
+            this.G_GuardAllShieldMenu_Minus5000.Text = "-5000 Shield";
+            this.G_GuardAllShieldMenu_Minus5000.Click += new System.EventHandler(this.ShieldAllMenu_Minus5000_Click);
+            // 
+            // G_GuardAllShieldMenu_Reset
+            // 
+            this.G_GuardAllShieldMenu_Reset.Name = "G_GuardAllShieldMenu_Reset";
+            this.G_GuardAllShieldMenu_Reset.Size = new System.Drawing.Size(167, 22);
+            this.G_GuardAllShieldMenu_Reset.Text = "Reset All Shield";
+            this.G_GuardAllShieldMenu_Reset.Click += new System.EventHandler(this.ShieldAllMenu_Reset_Click);
+            // 
+            // G_GuardMenu_ShieldMenu
+            // 
+            this.G_GuardMenu_ShieldMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.G_GuardShieldMenu_Add5000,
+            this.G_GuardShieldMenu_Change,
+            this.G_GuardShieldMenu_Minus5000,
+            this.G_GuardShieldMenu_Reset});
+            this.G_GuardMenu_ShieldMenu.Name = "G_GuardMenu_ShieldMenu";
+            this.G_GuardMenu_ShieldMenu.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardMenu_ShieldMenu.Text = "Edit Shield";
+            // 
+            // G_GuardShieldMenu_Add5000
+            // 
+            this.G_GuardShieldMenu_Add5000.Name = "G_GuardShieldMenu_Add5000";
+            this.G_GuardShieldMenu_Add5000.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardShieldMenu_Add5000.Text = "+5000 Shield";
+            this.G_GuardShieldMenu_Add5000.Click += new System.EventHandler(this.ShieldMenu_Add5000_Click);
+            // 
+            // G_GuardShieldMenu_Change
+            // 
+            this.G_GuardShieldMenu_Change.Name = "G_GuardShieldMenu_Change";
+            this.G_GuardShieldMenu_Change.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardShieldMenu_Change.Text = "Change Shield";
+            this.G_GuardShieldMenu_Change.Click += new System.EventHandler(this.ShieldMenu_Change_Click);
+            // 
+            // G_GuardShieldMenu_Minus5000
+            // 
+            this.G_GuardShieldMenu_Minus5000.Name = "G_GuardShieldMenu_Minus5000";
+            this.G_GuardShieldMenu_Minus5000.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardShieldMenu_Minus5000.Text = "-5000 Shield";
+            this.G_GuardShieldMenu_Minus5000.Click += new System.EventHandler(this.ShieldMenu_Minus5000_Click);
+            // 
+            // G_GuardShieldMenu_Reset
+            // 
+            this.G_GuardShieldMenu_Reset.Name = "G_GuardShieldMenu_Reset";
+            this.G_GuardShieldMenu_Reset.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardShieldMenu_Reset.Text = "Reset Shield";
+            this.G_GuardShieldMenu_Reset.Click += new System.EventHandler(this.ShieldMenu_Reset_Click);
             // 
             // Battlefield
             // 
@@ -1269,6 +1539,8 @@
             this.VG_GMenu.ResumeLayout(false);
             this.LockMenu.ResumeLayout(false);
             this.RG_GMenu.ResumeLayout(false);
+            this.GuardMenu.ResumeLayout(false);
+            this.G_GuardMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1390,5 +1662,35 @@
         private System.Windows.Forms.ToolStripMenuItem RG_GPowerMenu_Reset;
         private System.Windows.Forms.ToolStripMenuItem RG_GMenu_Rest;
         private System.Windows.Forms.ToolStripMenuItem RG_GMenu_Target;
+        private System.Windows.Forms.ContextMenuStrip GuardMenu;
+        private System.Windows.Forms.ToolStripMenuItem GuardMenu_RetireAll;
+        private System.Windows.Forms.ToolStripMenuItem GuardMenu_Bind;
+        private System.Windows.Forms.ToolStripMenuItem GuardMenu_TopDeck;
+        private System.Windows.Forms.ToolStripMenuItem GuardMenu_BottomDeck;
+        private System.Windows.Forms.ToolStripMenuItem GuardMenu_Target;
+        private System.Windows.Forms.ToolStripMenuItem GuardMenu_ShieldMenu;
+        private System.Windows.Forms.ToolStripMenuItem GuardMenu_ShieldAllMenu;
+        private System.Windows.Forms.ToolStripMenuItem GuardShieldMenu_Add5000;
+        private System.Windows.Forms.ToolStripMenuItem GuardShieldMenu_Minus5000;
+        private System.Windows.Forms.ToolStripMenuItem GuardShieldMenu_Change;
+        private System.Windows.Forms.ToolStripMenuItem GuardShieldMenu_Reset;
+        private System.Windows.Forms.ToolStripMenuItem GuardShieldAllMenu_Add5000;
+        private System.Windows.Forms.ToolStripMenuItem changeShieldToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem GuardShieldAllMenu_Minus5000;
+        private System.Windows.Forms.ToolStripMenuItem GuardShieldAllMenu_Reset;
+        private System.Windows.Forms.ContextMenuStrip G_GuardMenu;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardMenu_RetireAll;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardMenu_GZone;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardMenu_Target;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardMenu_ShieldAllMenu;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardAllShieldMenu_Add5000;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardAllShieldMenu_Change;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardAllShieldMenu_Minus5000;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardAllShieldMenu_Reset;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardMenu_ShieldMenu;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardShieldMenu_Add5000;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardShieldMenu_Change;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardShieldMenu_Minus5000;
+        private System.Windows.Forms.ToolStripMenuItem G_GuardShieldMenu_Reset;
     }
 }

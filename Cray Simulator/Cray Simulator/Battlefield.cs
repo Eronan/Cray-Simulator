@@ -276,7 +276,7 @@ namespace Cray_Simulator
                         picBox.Image = new Bitmap(rgCircle.Image);
 
                         //ContextMenuStrip
-                        if (rgCircle.Unit == unitType.G) picBox.ContextMenuStrip = null;
+                        if (rgCircle.Unit == unitType.G) picBox.ContextMenuStrip = RG_GMenu;
                         else picBox.ContextMenuStrip = RGMenu;
 
                         //Power
@@ -389,8 +389,8 @@ namespace Cray_Simulator
                 picBox.Location = new Point((int)(210.0 - 18.75 * (double)(playerField.GuardCircle.Count - 1) + 37.5 * i), 346);
 
                 //ContextMenuStrip
-                if (crd.Unit == unitType.G) picBox.ContextMenuStrip = null;
-                else picBox.ContextMenuStrip = null;
+                if (crd.Unit == unitType.G) picBox.ContextMenuStrip = G_GuardMenu;
+                else picBox.ContextMenuStrip = GuardMenu;
 
                 //Set Values
                 picBox.Tag = "Guardian-" + i;
@@ -1262,6 +1262,199 @@ namespace Cray_Simulator
             //Update Images
             ImageUpdate();
         }
+
+        private void GuardMenu_Opening(object sender, CancelEventArgs e)
+        {
+            ContextMenuStrip origSender = sender as ContextMenuStrip;
+            if (origSender == null) return;
+            //Set Reveal Text
+            PictureBox_MouseEnter(origSender.SourceControl, e);
+        }
+
+        private void GuardMenu_RetireAll_Click(object sender, EventArgs e)
+        {
+            foreach (Card crd in playerField.GuardCircle)
+            {
+                //Move cards to appropriate Zone
+                if (crd.Unit == unitType.G)
+                {
+                    crd.Location = "G Zone-" + playerField.GZone.Count;
+                    crd.Reset();
+                    playerField.GZone.Add(crd);
+                }
+                else
+                {
+                    crd.Location = "Drop-" + playerField.DropZone.Count;
+                    crd.Reset();
+                    playerField.DropZone.Add(crd);
+                }
+            }
+            //Clear Guardian Circle
+            playerField.GuardCircle.Clear();
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "retired all of their guardians.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void GuardMenu_Bind_Click(object sender, EventArgs e)
+        {
+            //Remove Card
+            playerField.RemoveCard(hoverCard.Location);
+
+            //Set Values
+            hoverCard.Location = "Bind-" + playerField.BindZone.Count;
+            hoverCard.Reset();
+
+            //Add to Bind ZOne
+            playerField.BindZone.Add(hoverCard);
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "bound " + hoverCard.Name + " from their guardians.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void ShieldMenu_Add5000_Click(object sender, EventArgs e)
+        {
+            //Give 5000 Shield
+            hoverCard.Shield += 5000;
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "gave " + hoverCard.Name + " +5000 Power.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void ShieldMenu_Change_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShieldMenu_Minus5000_Click(object sender, EventArgs e)
+        {
+            //Give 5000 Shield
+            hoverCard.Shield -= 5000;
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "gave " + hoverCard.Name + " -5000 Power.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void ShieldMenu_Reset_Click(object sender, EventArgs e)
+        {
+            //Reset Shield
+            hoverCard.ResetShield();
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "reset " + hoverCard.Name + "'s Shield.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void ShieldAllMenu_Add5000_Click(object sender, EventArgs e)
+        {
+            //Power to All Guardians
+            foreach (Card crd in playerField.GuardCircle) crd.Shield += 5000;
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "gave all guardians +5000 Shield.");
+            //Update Chat
+            ImageUpdate();
+        }
+
+        private void ShieldAllMenu_Change_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShieldAllMenu_Minus5000_Click(object sender, EventArgs e)
+        {
+            //Power to All Guardians
+            foreach (Card crd in playerField.GuardCircle) crd.Shield -= 5000;
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "gave all guardians -5000 Shield.");
+            //Update Chat
+            ImageUpdate();
+        }
+
+        private void ShieldAllMenu_Reset_Click(object sender, EventArgs e)
+        {
+            //Power to All Guardians
+            foreach (Card crd in playerField.GuardCircle) crd.ResetShield();
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "reset the Shield of all guardians.");
+            //Update Chat
+            ImageUpdate();
+        }
+
+        private void GuardMenu_TopDeck_Click(object sender, EventArgs e)
+        {
+            //Move to Deck
+            playerField.Deck.Insert(0, hoverCard);
+            playerField.RemoveCard(hoverCard.Location);
+
+            //Set Values
+            hoverCard.Location = "Deck-0";
+            hoverCard.Reset();
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "put " + hoverCard.Name + " on the top of his deck.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void GuardMenu_BottomDeck_Click(object sender, EventArgs e)
+        {
+            //Move to Deck
+            playerField.Deck.Add(hoverCard);
+            playerField.RemoveCard(hoverCard.Location);
+
+            //Set Values
+            hoverCard.Location = "Deck-" + playerField.Deck.Count;
+            hoverCard.Reset();
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "put " + hoverCard.Name + " on the bottom of his deck.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void G_GuardMenu_GZone_Click(object sender, EventArgs e)
+        {
+            //Remove Card
+            playerField.RemoveCard(hoverCard.Location);
+
+            //Set Values
+            hoverCard.Location = "G Zone-" + playerField.GZone.Count;
+            hoverCard.Reset();
+
+            //Add to G Zone
+            playerField.GZone.Add(hoverCard);
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "returned " + hoverCard.Name + " to the G Zone.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void GuardMenu_Target_Click(object sender, EventArgs e)
+        {
+            //Target Card
+            hoverCard.Target();
+
+            //Update Images
+            ImageUpdate();
+        }
+
+
+
+
+
 
 
         public void PictureBox_MouseDown(object sender, MouseEventArgs e)
