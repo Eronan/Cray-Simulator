@@ -39,15 +39,6 @@
             this.button_OppBind = new System.Windows.Forms.Button();
             this.pictureBox_Info = new System.Windows.Forms.PictureBox();
             this.richTextBox_Info = new System.Windows.Forms.RichTextBox();
-            this.pictureBox_Field = new System.Windows.Forms.PictureBox();
-            this.label_VGPower = new System.Windows.Forms.Label();
-            this.label_RG1 = new System.Windows.Forms.Label();
-            this.label_RG2 = new System.Windows.Forms.Label();
-            this.label_RG3 = new System.Windows.Forms.Label();
-            this.label_RG4 = new System.Windows.Forms.Label();
-            this.label_RG5 = new System.Windows.Forms.Label();
-            this.label_ShieldTotal = new System.Windows.Forms.Label();
-            this.pictureBox_VG = new System.Windows.Forms.PictureBox();
             this.VGMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.VGMenu_Attack = new System.Windows.Forms.ToolStripMenuItem();
             this.VGMenu_Delete = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +52,6 @@
             this.VGMenu_TopDeck = new System.Windows.Forms.ToolStripMenuItem();
             this.VGMenu_BottomDeck = new System.Windows.Forms.ToolStripMenuItem();
             this.VGMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox_RG0 = new System.Windows.Forms.PictureBox();
             this.RGMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RGMenu_Attack = new System.Windows.Forms.ToolStripMenuItem();
             this.RGMenu_Lock = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,11 +65,6 @@
             this.RGMenu_TopDeck = new System.Windows.Forms.ToolStripMenuItem();
             this.RGMenu_BottomDeck = new System.Windows.Forms.ToolStripMenuItem();
             this.RGMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox_RG1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox_RG2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox_RG3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox_RG4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox_PlyrDeck = new System.Windows.Forms.PictureBox();
             this.DeckMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeckMenu_Search = new System.Windows.Forms.ToolStripMenuItem();
             this.DeckMenu_BindUp = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,10 +75,6 @@
             this.DeckMenu_Trigger = new System.Windows.Forms.ToolStripMenuItem();
             this.DeckMenu_Shuffle = new System.Windows.Forms.ToolStripMenuItem();
             this.DeckMenu_SoulCharge = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox_PlyrDrop = new System.Windows.Forms.PictureBox();
-            this.pictureBox_GDown = new System.Windows.Forms.PictureBox();
-            this.pictureBox_GUp = new System.Windows.Forms.PictureBox();
-            this.pictureBox_PlyrTrigger = new System.Windows.Forms.PictureBox();
             this.ShortcutMenu = new System.Windows.Forms.MenuStrip();
             this.shortcutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shortcutMenu_Draw = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,6 +84,7 @@
             this.shortcutMenu_Coin = new System.Windows.Forms.ToolStripMenuItem();
             this.shortcutMenu_End = new System.Windows.Forms.ToolStripMenuItem();
             this.shortcutMenu_ResetAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShortcutMenu_XRide = new System.Windows.Forms.ToolStripMenuItem();
             this.PlaceVCMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PlaceVCMenu_Ride = new System.Windows.Forms.ToolStripMenuItem();
             this.PlaceVCMenu_Legion = new System.Windows.Forms.ToolStripMenuItem();
@@ -162,37 +144,79 @@
             this.GuardMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
             this.G_GuardMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.G_GuardMenu_RetireAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.G_GuardMenu_GZone = new System.Windows.Forms.ToolStripMenuItem();
-            this.G_GuardMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
-            this.G_GuardMenu_ShieldAllMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.G_GuardAllShieldMenu_Add5000 = new System.Windows.Forms.ToolStripMenuItem();
-            this.G_GuardAllShieldMenu_Change = new System.Windows.Forms.ToolStripMenuItem();
-            this.G_GuardAllShieldMenu_Minus5000 = new System.Windows.Forms.ToolStripMenuItem();
-            this.G_GuardAllShieldMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
             this.G_GuardMenu_ShieldMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.G_GuardShieldMenu_Add5000 = new System.Windows.Forms.ToolStripMenuItem();
             this.G_GuardShieldMenu_Change = new System.Windows.Forms.ToolStripMenuItem();
             this.G_GuardShieldMenu_Minus5000 = new System.Windows.Forms.ToolStripMenuItem();
             this.G_GuardShieldMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardMenu_ShieldAllMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardAllShieldMenu_Add5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardAllShieldMenu_Change = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardAllShieldMenu_Minus5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardAllShieldMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardMenu_GZone = new System.Windows.Forms.ToolStripMenuItem();
+            this.G_GuardMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox_PlyrTrigger = new System.Windows.Forms.PictureBox();
+            this.pictureBox_GUp = new System.Windows.Forms.PictureBox();
+            this.pictureBox_GDown = new System.Windows.Forms.PictureBox();
+            this.pictureBox_PlyrDrop = new System.Windows.Forms.PictureBox();
+            this.pictureBox_PlyrDeck = new System.Windows.Forms.PictureBox();
+            this.pictureBox_RG4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_RG3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_RG2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_RG1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_RG0 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_VG = new System.Windows.Forms.PictureBox();
+            this.pictureBox_Field = new System.Windows.Forms.PictureBox();
+            this.FieldMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.FieldMenu_StandAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.FieldMenu_Unlock = new System.Windows.Forms.ToolStripMenuItem();
+            this.editAllPowerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FieldPowerMenu_Add5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.FieldPowerMenu_Change = new System.Windows.Forms.ToolStripMenuItem();
+            this.FieldPowerMenu_Minus5000 = new System.Windows.Forms.ToolStripMenuItem();
+            this.FieldPowerMenu_Reset = new System.Windows.Forms.ToolStripMenuItem();
+            this.FieldMenu_CoinFlip = new System.Windows.Forms.ToolStripMenuItem();
+            this.FieldMenu_EndTurn = new System.Windows.Forms.ToolStripMenuItem();
+            this.label_VGPower = new System.Windows.Forms.Label();
+            this.label_RG1 = new System.Windows.Forms.Label();
+            this.label_RG2 = new System.Windows.Forms.Label();
+            this.label_RG3 = new System.Windows.Forms.Label();
+            this.label_RG4 = new System.Windows.Forms.Label();
+            this.label_RG5 = new System.Windows.Forms.Label();
+            this.label_ShieldTotal = new System.Windows.Forms.Label();
+            this.DeckCardMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DeckCardMenu_Reveal = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeckCardMenu_BindUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeckCardMenu_BindDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeckCardMenu_TopDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeckCardMenu_Bottom = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeckCardMenu_Shuffle = new System.Windows.Forms.ToolStripMenuItem();
+            this.SoulMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.SoulMenu_SoulBlast = new System.Windows.Forms.ToolStripMenuItem();
+            this.SoulMenu_Bind = new System.Windows.Forms.ToolStripMenuItem();
+            this.SoulMenu_TopDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.SoulMenu_BottomDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.SoulMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
+            this.DropMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DropMenu_Bind = new System.Windows.Forms.ToolStripMenuItem();
+            this.DropMenu_Soul = new System.Windows.Forms.ToolStripMenuItem();
+            this.DropMenu_TopDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.DropMenu_BottomDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.DropMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
+            this.DropMenu_AllDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.BindMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.BindMenu_TopDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.BindMenu_BottomDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.BindMenu_TurnOver = new System.Windows.Forms.ToolStripMenuItem();
+            this.BindMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip_Counts = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox_Chat.SuspendLayout();
             this.groupBox_Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Field)).BeginInit();
-            this.pictureBox_Field.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_VG)).BeginInit();
             this.VGMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG0)).BeginInit();
             this.RGMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrDeck)).BeginInit();
             this.DeckMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrDrop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_GDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_GUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrTrigger)).BeginInit();
             this.ShortcutMenu.SuspendLayout();
             this.PlaceVCMenu.SuspendLayout();
             this.HandMenu.SuspendLayout();
@@ -201,6 +225,24 @@
             this.RG_GMenu.SuspendLayout();
             this.GuardMenu.SuspendLayout();
             this.G_GuardMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrTrigger)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_GUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_GDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrDrop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrDeck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_VG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Field)).BeginInit();
+            this.pictureBox_Field.SuspendLayout();
+            this.FieldMenu.SuspendLayout();
+            this.DeckCardMenu.SuspendLayout();
+            this.SoulMenu.SuspendLayout();
+            this.DropMenu.SuspendLayout();
+            this.BindMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_Chat
@@ -225,6 +267,7 @@
             this.button_Check.TabIndex = 1;
             this.button_Check.Text = "Check Cards";
             this.button_Check.UseVisualStyleBackColor = true;
+            this.button_Check.Click += new System.EventHandler(this.button_Check_Click);
             // 
             // textBox_ChatInput
             // 
@@ -267,6 +310,7 @@
             this.button_PlyrBind.TabIndex = 9;
             this.button_PlyrBind.Text = "Your Bind Zone";
             this.button_PlyrBind.UseVisualStyleBackColor = false;
+            this.button_PlyrBind.Click += new System.EventHandler(this.button_PlyrBind_Click);
             // 
             // button_OppBind
             // 
@@ -297,134 +341,6 @@
             this.richTextBox_Info.Size = new System.Drawing.Size(278, 187);
             this.richTextBox_Info.TabIndex = 4;
             this.richTextBox_Info.Text = "";
-            // 
-            // pictureBox_Field
-            // 
-            this.pictureBox_Field.Controls.Add(this.label_VGPower);
-            this.pictureBox_Field.Controls.Add(this.label_RG1);
-            this.pictureBox_Field.Controls.Add(this.label_RG2);
-            this.pictureBox_Field.Controls.Add(this.label_RG3);
-            this.pictureBox_Field.Controls.Add(this.label_RG4);
-            this.pictureBox_Field.Controls.Add(this.label_RG5);
-            this.pictureBox_Field.Controls.Add(this.label_ShieldTotal);
-            this.pictureBox_Field.Image = global::Cray_Simulator.Properties.Resources.Cray_Simulator_Loaded_Playmat;
-            this.pictureBox_Field.Location = new System.Drawing.Point(0, 76);
-            this.pictureBox_Field.Name = "pictureBox_Field";
-            this.pictureBox_Field.Size = new System.Drawing.Size(498, 590);
-            this.pictureBox_Field.TabIndex = 7;
-            this.pictureBox_Field.TabStop = false;
-            this.pictureBox_Field.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Field_MouseUp);
-            // 
-            // label_VGPower
-            // 
-            this.label_VGPower.AutoSize = true;
-            this.label_VGPower.BackColor = System.Drawing.Color.Transparent;
-            this.label_VGPower.ForeColor = System.Drawing.Color.White;
-            this.label_VGPower.Location = new System.Drawing.Point(225, 460);
-            this.label_VGPower.Name = "label_VGPower";
-            this.label_VGPower.Size = new System.Drawing.Size(43, 13);
-            this.label_VGPower.TabIndex = 14;
-            this.label_VGPower.Text = "Power: ";
-            this.label_VGPower.Visible = false;
-            // 
-            // label_RG1
-            // 
-            this.label_RG1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_RG1.AutoSize = true;
-            this.label_RG1.BackColor = System.Drawing.Color.Transparent;
-            this.label_RG1.ForeColor = System.Drawing.Color.White;
-            this.label_RG1.Location = new System.Drawing.Point(128, 460);
-            this.label_RG1.Name = "label_RG1";
-            this.label_RG1.Size = new System.Drawing.Size(40, 13);
-            this.label_RG1.TabIndex = 12;
-            this.label_RG1.Text = "Power:";
-            this.label_RG1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_RG1.Visible = false;
-            // 
-            // label_RG2
-            // 
-            this.label_RG2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_RG2.AutoSize = true;
-            this.label_RG2.BackColor = System.Drawing.Color.Transparent;
-            this.label_RG2.ForeColor = System.Drawing.Color.White;
-            this.label_RG2.Location = new System.Drawing.Point(324, 460);
-            this.label_RG2.Name = "label_RG2";
-            this.label_RG2.Size = new System.Drawing.Size(40, 13);
-            this.label_RG2.TabIndex = 13;
-            this.label_RG2.Text = "Power:";
-            this.label_RG2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_RG2.Visible = false;
-            // 
-            // label_RG3
-            // 
-            this.label_RG3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_RG3.AutoSize = true;
-            this.label_RG3.BackColor = System.Drawing.Color.Transparent;
-            this.label_RG3.ForeColor = System.Drawing.Color.White;
-            this.label_RG3.Location = new System.Drawing.Point(128, 564);
-            this.label_RG3.Name = "label_RG3";
-            this.label_RG3.Size = new System.Drawing.Size(40, 13);
-            this.label_RG3.TabIndex = 8;
-            this.label_RG3.Text = "Power:";
-            this.label_RG3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_RG3.Visible = false;
-            // 
-            // label_RG4
-            // 
-            this.label_RG4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_RG4.AutoSize = true;
-            this.label_RG4.BackColor = System.Drawing.Color.Transparent;
-            this.label_RG4.ForeColor = System.Drawing.Color.White;
-            this.label_RG4.Location = new System.Drawing.Point(226, 564);
-            this.label_RG4.Name = "label_RG4";
-            this.label_RG4.Size = new System.Drawing.Size(40, 13);
-            this.label_RG4.TabIndex = 11;
-            this.label_RG4.Text = "Power:";
-            this.label_RG4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_RG4.Visible = false;
-            // 
-            // label_RG5
-            // 
-            this.label_RG5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_RG5.AutoSize = true;
-            this.label_RG5.BackColor = System.Drawing.Color.Transparent;
-            this.label_RG5.ForeColor = System.Drawing.Color.White;
-            this.label_RG5.Location = new System.Drawing.Point(324, 564);
-            this.label_RG5.Name = "label_RG5";
-            this.label_RG5.Size = new System.Drawing.Size(40, 13);
-            this.label_RG5.TabIndex = 10;
-            this.label_RG5.Text = "Power:";
-            this.label_RG5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_RG5.Visible = false;
-            // 
-            // label_ShieldTotal
-            // 
-            this.label_ShieldTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_ShieldTotal.AutoSize = true;
-            this.label_ShieldTotal.BackColor = System.Drawing.Color.Transparent;
-            this.label_ShieldTotal.ForeColor = System.Drawing.Color.White;
-            this.label_ShieldTotal.Location = new System.Drawing.Point(230, 341);
-            this.label_ShieldTotal.Name = "label_ShieldTotal";
-            this.label_ShieldTotal.Size = new System.Drawing.Size(39, 13);
-            this.label_ShieldTotal.TabIndex = 14;
-            this.label_ShieldTotal.Text = "Shield:";
-            this.label_ShieldTotal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_ShieldTotal.Visible = false;
-            // 
-            // pictureBox_VG
-            // 
-            this.pictureBox_VG.ContextMenuStrip = this.VGMenu;
-            this.pictureBox_VG.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_VG.Image")));
-            this.pictureBox_VG.Location = new System.Drawing.Point(220, 456);
-            this.pictureBox_VG.Name = "pictureBox_VG";
-            this.pictureBox_VG.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_VG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_VG.TabIndex = 11;
-            this.pictureBox_VG.TabStop = false;
-            this.pictureBox_VG.Tag = "Vanguard-0";
-            this.pictureBox_VG.Visible = false;
-            this.pictureBox_VG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.pictureBox_VG.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
             // 
             // VGMenu
             // 
@@ -529,21 +445,6 @@
             this.VGMenu_Target.Text = "Target";
             this.VGMenu_Target.Click += new System.EventHandler(this.VGMenu_Target_Click);
             // 
-            // pictureBox_RG0
-            // 
-            this.pictureBox_RG0.ContextMenuStrip = this.RGMenu;
-            this.pictureBox_RG0.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG0.Image")));
-            this.pictureBox_RG0.Location = new System.Drawing.Point(123, 456);
-            this.pictureBox_RG0.Name = "pictureBox_RG0";
-            this.pictureBox_RG0.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_RG0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_RG0.TabIndex = 12;
-            this.pictureBox_RG0.TabStop = false;
-            this.pictureBox_RG0.Tag = "Rearguard-0";
-            this.pictureBox_RG0.Visible = false;
-            this.pictureBox_RG0.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.pictureBox_RG0.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            // 
             // RGMenu
             // 
             this.RGMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -647,78 +548,6 @@
             this.RGMenu_Target.Text = "Target";
             this.RGMenu_Target.Click += new System.EventHandler(this.RGMenu_Target_Click);
             // 
-            // pictureBox_RG1
-            // 
-            this.pictureBox_RG1.ContextMenuStrip = this.RGMenu;
-            this.pictureBox_RG1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG1.Image")));
-            this.pictureBox_RG1.Location = new System.Drawing.Point(317, 456);
-            this.pictureBox_RG1.Name = "pictureBox_RG1";
-            this.pictureBox_RG1.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_RG1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_RG1.TabIndex = 13;
-            this.pictureBox_RG1.TabStop = false;
-            this.pictureBox_RG1.Tag = "Rearguard-1";
-            this.pictureBox_RG1.Visible = false;
-            this.pictureBox_RG1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.pictureBox_RG1.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            // 
-            // pictureBox_RG2
-            // 
-            this.pictureBox_RG2.ContextMenuStrip = this.RGMenu;
-            this.pictureBox_RG2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG2.Image")));
-            this.pictureBox_RG2.Location = new System.Drawing.Point(123, 560);
-            this.pictureBox_RG2.Name = "pictureBox_RG2";
-            this.pictureBox_RG2.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_RG2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_RG2.TabIndex = 14;
-            this.pictureBox_RG2.TabStop = false;
-            this.pictureBox_RG2.Tag = "Rearguard-2";
-            this.pictureBox_RG2.Visible = false;
-            this.pictureBox_RG2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.pictureBox_RG2.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            // 
-            // pictureBox_RG3
-            // 
-            this.pictureBox_RG3.ContextMenuStrip = this.RGMenu;
-            this.pictureBox_RG3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG3.Image")));
-            this.pictureBox_RG3.Location = new System.Drawing.Point(220, 560);
-            this.pictureBox_RG3.Name = "pictureBox_RG3";
-            this.pictureBox_RG3.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_RG3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_RG3.TabIndex = 15;
-            this.pictureBox_RG3.TabStop = false;
-            this.pictureBox_RG3.Tag = "Rearguard-3";
-            this.pictureBox_RG3.Visible = false;
-            this.pictureBox_RG3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.pictureBox_RG3.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            // 
-            // pictureBox_RG4
-            // 
-            this.pictureBox_RG4.ContextMenuStrip = this.RGMenu;
-            this.pictureBox_RG4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG4.Image")));
-            this.pictureBox_RG4.Location = new System.Drawing.Point(317, 560);
-            this.pictureBox_RG4.Name = "pictureBox_RG4";
-            this.pictureBox_RG4.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_RG4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_RG4.TabIndex = 16;
-            this.pictureBox_RG4.TabStop = false;
-            this.pictureBox_RG4.Tag = "Rearguard-4";
-            this.pictureBox_RG4.Visible = false;
-            this.pictureBox_RG4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.pictureBox_RG4.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            // 
-            // pictureBox_PlyrDeck
-            // 
-            this.pictureBox_PlyrDeck.ContextMenuStrip = this.DeckMenu;
-            this.pictureBox_PlyrDeck.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PlyrDeck.Image")));
-            this.pictureBox_PlyrDeck.Location = new System.Drawing.Point(421, 459);
-            this.pictureBox_PlyrDeck.Name = "pictureBox_PlyrDeck";
-            this.pictureBox_PlyrDeck.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_PlyrDeck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_PlyrDeck.TabIndex = 17;
-            this.pictureBox_PlyrDeck.TabStop = false;
-            this.pictureBox_PlyrDeck.Tag = "Deck-0";
-            // 
             // DeckMenu
             // 
             this.DeckMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -800,56 +629,6 @@
             this.DeckMenu_SoulCharge.Text = "Soul Charge";
             this.DeckMenu_SoulCharge.Click += new System.EventHandler(this.shortcutMenu_SoulCharge_Click);
             // 
-            // pictureBox_PlyrDrop
-            // 
-            this.pictureBox_PlyrDrop.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PlyrDrop.Image")));
-            this.pictureBox_PlyrDrop.Location = new System.Drawing.Point(421, 555);
-            this.pictureBox_PlyrDrop.Name = "pictureBox_PlyrDrop";
-            this.pictureBox_PlyrDrop.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_PlyrDrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_PlyrDrop.TabIndex = 18;
-            this.pictureBox_PlyrDrop.TabStop = false;
-            this.pictureBox_PlyrDrop.Tag = "Deck-0";
-            this.pictureBox_PlyrDrop.Visible = false;
-            // 
-            // pictureBox_GDown
-            // 
-            this.pictureBox_GDown.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_GDown.Image")));
-            this.pictureBox_GDown.Location = new System.Drawing.Point(24, 371);
-            this.pictureBox_GDown.Name = "pictureBox_GDown";
-            this.pictureBox_GDown.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_GDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_GDown.TabIndex = 19;
-            this.pictureBox_GDown.TabStop = false;
-            this.pictureBox_GDown.Tag = "G Zone-0";
-            this.pictureBox_GDown.Visible = false;
-            // 
-            // pictureBox_GUp
-            // 
-            this.pictureBox_GUp.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_GUp.Image")));
-            this.pictureBox_GUp.Location = new System.Drawing.Point(75, 371);
-            this.pictureBox_GUp.Name = "pictureBox_GUp";
-            this.pictureBox_GUp.Size = new System.Drawing.Size(52, 75);
-            this.pictureBox_GUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_GUp.TabIndex = 20;
-            this.pictureBox_GUp.TabStop = false;
-            this.pictureBox_GUp.Tag = "G Zone-0";
-            this.pictureBox_GUp.Visible = false;
-            // 
-            // pictureBox_PlyrTrigger
-            // 
-            this.pictureBox_PlyrTrigger.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PlyrTrigger.Image")));
-            this.pictureBox_PlyrTrigger.Location = new System.Drawing.Point(401, 393);
-            this.pictureBox_PlyrTrigger.Name = "pictureBox_PlyrTrigger";
-            this.pictureBox_PlyrTrigger.Size = new System.Drawing.Size(75, 52);
-            this.pictureBox_PlyrTrigger.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_PlyrTrigger.TabIndex = 21;
-            this.pictureBox_PlyrTrigger.TabStop = false;
-            this.pictureBox_PlyrTrigger.Tag = "Trigger-0";
-            this.pictureBox_PlyrTrigger.Visible = false;
-            this.pictureBox_PlyrTrigger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.pictureBox_PlyrTrigger.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            // 
             // ShortcutMenu
             // 
             this.ShortcutMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -870,7 +649,8 @@
             this.shortcutMenu_SoulCharge,
             this.shortcutMenu_Coin,
             this.shortcutMenu_End,
-            this.shortcutMenu_ResetAll});
+            this.shortcutMenu_ResetAll,
+            this.ShortcutMenu_XRide});
             this.shortcutsToolStripMenuItem.Name = "shortcutsToolStripMenuItem";
             this.shortcutsToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.shortcutsToolStripMenuItem.Text = "Shortcuts";
@@ -879,7 +659,7 @@
             // 
             this.shortcutMenu_Draw.Name = "shortcutMenu_Draw";
             this.shortcutMenu_Draw.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.shortcutMenu_Draw.Size = new System.Drawing.Size(196, 22);
+            this.shortcutMenu_Draw.Size = new System.Drawing.Size(200, 22);
             this.shortcutMenu_Draw.Text = "Draw";
             this.shortcutMenu_Draw.Click += new System.EventHandler(this.shortcutMenu_Draw_Click);
             // 
@@ -887,7 +667,7 @@
             // 
             this.shortcutMenu_Shuffle.Name = "shortcutMenu_Shuffle";
             this.shortcutMenu_Shuffle.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.shortcutMenu_Shuffle.Size = new System.Drawing.Size(196, 22);
+            this.shortcutMenu_Shuffle.Size = new System.Drawing.Size(200, 22);
             this.shortcutMenu_Shuffle.Text = "Shuffle";
             this.shortcutMenu_Shuffle.Click += new System.EventHandler(this.shortcutMenu_Shuffle_Click);
             // 
@@ -895,7 +675,7 @@
             // 
             this.shortcutMenu_Trigger.Name = "shortcutMenu_Trigger";
             this.shortcutMenu_Trigger.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.shortcutMenu_Trigger.Size = new System.Drawing.Size(196, 22);
+            this.shortcutMenu_Trigger.Size = new System.Drawing.Size(200, 22);
             this.shortcutMenu_Trigger.Text = "Trigger Check";
             this.shortcutMenu_Trigger.Click += new System.EventHandler(this.shortcutMenu_Trigger_Click);
             // 
@@ -903,7 +683,7 @@
             // 
             this.shortcutMenu_SoulCharge.Name = "shortcutMenu_SoulCharge";
             this.shortcutMenu_SoulCharge.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.shortcutMenu_SoulCharge.Size = new System.Drawing.Size(196, 22);
+            this.shortcutMenu_SoulCharge.Size = new System.Drawing.Size(200, 22);
             this.shortcutMenu_SoulCharge.Text = "Soul Charge";
             this.shortcutMenu_SoulCharge.Click += new System.EventHandler(this.shortcutMenu_SoulCharge_Click);
             // 
@@ -911,7 +691,7 @@
             // 
             this.shortcutMenu_Coin.Name = "shortcutMenu_Coin";
             this.shortcutMenu_Coin.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.shortcutMenu_Coin.Size = new System.Drawing.Size(196, 22);
+            this.shortcutMenu_Coin.Size = new System.Drawing.Size(200, 22);
             this.shortcutMenu_Coin.Text = "Coin Flip";
             this.shortcutMenu_Coin.Click += new System.EventHandler(this.shortcutMenu_Coin_Click);
             // 
@@ -919,7 +699,7 @@
             // 
             this.shortcutMenu_End.Name = "shortcutMenu_End";
             this.shortcutMenu_End.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.shortcutMenu_End.Size = new System.Drawing.Size(196, 22);
+            this.shortcutMenu_End.Size = new System.Drawing.Size(200, 22);
             this.shortcutMenu_End.Text = "End Turn";
             this.shortcutMenu_End.Click += new System.EventHandler(this.shortcutMenu_End_Click);
             // 
@@ -927,9 +707,17 @@
             // 
             this.shortcutMenu_ResetAll.Name = "shortcutMenu_ResetAll";
             this.shortcutMenu_ResetAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.shortcutMenu_ResetAll.Size = new System.Drawing.Size(196, 22);
+            this.shortcutMenu_ResetAll.Size = new System.Drawing.Size(200, 22);
             this.shortcutMenu_ResetAll.Text = "Reset All Power";
             this.shortcutMenu_ResetAll.Click += new System.EventHandler(this.shortcutMenu_ResetAll_Click);
+            // 
+            // ShortcutMenu_XRide
+            // 
+            this.ShortcutMenu_XRide.Name = "ShortcutMenu_XRide";
+            this.ShortcutMenu_XRide.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.ShortcutMenu_XRide.Size = new System.Drawing.Size(200, 22);
+            this.ShortcutMenu_XRide.Text = "Crossride Power";
+            this.ShortcutMenu_XRide.Click += new System.EventHandler(this.ShortcutMenu_XRide_Click);
             // 
             // PlaceVCMenu
             // 
@@ -1217,30 +1005,35 @@
             this.RG_GPowerMenu_Add5000.Name = "RG_GPowerMenu_Add5000";
             this.RG_GPowerMenu_Add5000.Size = new System.Drawing.Size(151, 22);
             this.RG_GPowerMenu_Add5000.Text = "+5000 Power";
+            this.RG_GPowerMenu_Add5000.Click += new System.EventHandler(this.PowerMenu_Add5000_Click);
             // 
             // RG_GPowerMenu_Change
             // 
             this.RG_GPowerMenu_Change.Name = "RG_GPowerMenu_Change";
             this.RG_GPowerMenu_Change.Size = new System.Drawing.Size(151, 22);
             this.RG_GPowerMenu_Change.Text = "Change Power";
+            this.RG_GPowerMenu_Change.Click += new System.EventHandler(this.PowerMenu_Change_Click);
             // 
             // RG_GPowerMenu_Minus5000
             // 
             this.RG_GPowerMenu_Minus5000.Name = "RG_GPowerMenu_Minus5000";
             this.RG_GPowerMenu_Minus5000.Size = new System.Drawing.Size(151, 22);
             this.RG_GPowerMenu_Minus5000.Text = "-5000 Power";
+            this.RG_GPowerMenu_Minus5000.Click += new System.EventHandler(this.PowerMenu_Minus5000_Click);
             // 
             // RG_GPowerMenu_Reset
             // 
             this.RG_GPowerMenu_Reset.Name = "RG_GPowerMenu_Reset";
             this.RG_GPowerMenu_Reset.Size = new System.Drawing.Size(151, 22);
             this.RG_GPowerMenu_Reset.Text = "Reset Power";
+            this.RG_GPowerMenu_Reset.Click += new System.EventHandler(this.PowerMenu_Reset_Click);
             // 
             // RG_GMenu_Rest
             // 
             this.RG_GMenu_Rest.Name = "RG_GMenu_Rest";
             this.RG_GMenu_Rest.Size = new System.Drawing.Size(130, 22);
             this.RG_GMenu_Rest.Text = "[Rest]";
+            this.RG_GMenu_Rest.Click += new System.EventHandler(this.RGMenu_Rest_Click);
             // 
             // RG_GMenu_Target
             // 
@@ -1290,28 +1083,28 @@
             // GuardShieldMenu_Add5000
             // 
             this.GuardShieldMenu_Add5000.Name = "GuardShieldMenu_Add5000";
-            this.GuardShieldMenu_Add5000.Size = new System.Drawing.Size(152, 22);
+            this.GuardShieldMenu_Add5000.Size = new System.Drawing.Size(150, 22);
             this.GuardShieldMenu_Add5000.Text = "+5000 Shield";
             this.GuardShieldMenu_Add5000.Click += new System.EventHandler(this.ShieldMenu_Add5000_Click);
             // 
             // GuardShieldMenu_Change
             // 
             this.GuardShieldMenu_Change.Name = "GuardShieldMenu_Change";
-            this.GuardShieldMenu_Change.Size = new System.Drawing.Size(152, 22);
+            this.GuardShieldMenu_Change.Size = new System.Drawing.Size(150, 22);
             this.GuardShieldMenu_Change.Text = "Change Shield";
             this.GuardShieldMenu_Change.Click += new System.EventHandler(this.ShieldMenu_Change_Click);
             // 
             // GuardShieldMenu_Minus5000
             // 
             this.GuardShieldMenu_Minus5000.Name = "GuardShieldMenu_Minus5000";
-            this.GuardShieldMenu_Minus5000.Size = new System.Drawing.Size(152, 22);
+            this.GuardShieldMenu_Minus5000.Size = new System.Drawing.Size(150, 22);
             this.GuardShieldMenu_Minus5000.Text = "-5000 Shield";
             this.GuardShieldMenu_Minus5000.Click += new System.EventHandler(this.ShieldMenu_Minus5000_Click);
             // 
             // GuardShieldMenu_Reset
             // 
             this.GuardShieldMenu_Reset.Name = "GuardShieldMenu_Reset";
-            this.GuardShieldMenu_Reset.Size = new System.Drawing.Size(152, 22);
+            this.GuardShieldMenu_Reset.Size = new System.Drawing.Size(150, 22);
             this.GuardShieldMenu_Reset.Text = "Reset Shield";
             this.GuardShieldMenu_Reset.Click += new System.EventHandler(this.ShieldMenu_Reset_Click);
             // 
@@ -1384,29 +1177,54 @@
             this.G_GuardMenu_GZone,
             this.G_GuardMenu_Target});
             this.G_GuardMenu.Name = "GCircleStrip";
-            this.G_GuardMenu.Size = new System.Drawing.Size(153, 136);
+            this.G_GuardMenu.Size = new System.Drawing.Size(147, 114);
             this.G_GuardMenu.Opening += new System.ComponentModel.CancelEventHandler(this.GuardMenu_Opening);
             // 
             // G_GuardMenu_RetireAll
             // 
             this.G_GuardMenu_RetireAll.Name = "G_GuardMenu_RetireAll";
-            this.G_GuardMenu_RetireAll.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardMenu_RetireAll.Size = new System.Drawing.Size(146, 22);
             this.G_GuardMenu_RetireAll.Text = "Retire All";
             this.G_GuardMenu_RetireAll.Click += new System.EventHandler(this.GuardMenu_RetireAll_Click);
             // 
-            // G_GuardMenu_GZone
+            // G_GuardMenu_ShieldMenu
             // 
-            this.G_GuardMenu_GZone.Name = "G_GuardMenu_GZone";
-            this.G_GuardMenu_GZone.Size = new System.Drawing.Size(152, 22);
-            this.G_GuardMenu_GZone.Text = "To G Zone";
-            this.G_GuardMenu_GZone.Click += new System.EventHandler(this.G_GuardMenu_GZone_Click);
+            this.G_GuardMenu_ShieldMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.G_GuardShieldMenu_Add5000,
+            this.G_GuardShieldMenu_Change,
+            this.G_GuardShieldMenu_Minus5000,
+            this.G_GuardShieldMenu_Reset});
+            this.G_GuardMenu_ShieldMenu.Name = "G_GuardMenu_ShieldMenu";
+            this.G_GuardMenu_ShieldMenu.Size = new System.Drawing.Size(146, 22);
+            this.G_GuardMenu_ShieldMenu.Text = "Edit Shield";
             // 
-            // G_GuardMenu_Target
+            // G_GuardShieldMenu_Add5000
             // 
-            this.G_GuardMenu_Target.Name = "G_GuardMenu_Target";
-            this.G_GuardMenu_Target.Size = new System.Drawing.Size(152, 22);
-            this.G_GuardMenu_Target.Text = "Target";
-            this.G_GuardMenu_Target.Click += new System.EventHandler(this.GuardMenu_Target_Click);
+            this.G_GuardShieldMenu_Add5000.Name = "G_GuardShieldMenu_Add5000";
+            this.G_GuardShieldMenu_Add5000.Size = new System.Drawing.Size(150, 22);
+            this.G_GuardShieldMenu_Add5000.Text = "+5000 Shield";
+            this.G_GuardShieldMenu_Add5000.Click += new System.EventHandler(this.ShieldMenu_Add5000_Click);
+            // 
+            // G_GuardShieldMenu_Change
+            // 
+            this.G_GuardShieldMenu_Change.Name = "G_GuardShieldMenu_Change";
+            this.G_GuardShieldMenu_Change.Size = new System.Drawing.Size(150, 22);
+            this.G_GuardShieldMenu_Change.Text = "Change Shield";
+            this.G_GuardShieldMenu_Change.Click += new System.EventHandler(this.ShieldMenu_Change_Click);
+            // 
+            // G_GuardShieldMenu_Minus5000
+            // 
+            this.G_GuardShieldMenu_Minus5000.Name = "G_GuardShieldMenu_Minus5000";
+            this.G_GuardShieldMenu_Minus5000.Size = new System.Drawing.Size(150, 22);
+            this.G_GuardShieldMenu_Minus5000.Text = "-5000 Shield";
+            this.G_GuardShieldMenu_Minus5000.Click += new System.EventHandler(this.ShieldMenu_Minus5000_Click);
+            // 
+            // G_GuardShieldMenu_Reset
+            // 
+            this.G_GuardShieldMenu_Reset.Name = "G_GuardShieldMenu_Reset";
+            this.G_GuardShieldMenu_Reset.Size = new System.Drawing.Size(150, 22);
+            this.G_GuardShieldMenu_Reset.Text = "Reset Shield";
+            this.G_GuardShieldMenu_Reset.Click += new System.EventHandler(this.ShieldMenu_Reset_Click);
             // 
             // G_GuardMenu_ShieldAllMenu
             // 
@@ -1416,7 +1234,7 @@
             this.G_GuardAllShieldMenu_Minus5000,
             this.G_GuardAllShieldMenu_Reset});
             this.G_GuardMenu_ShieldAllMenu.Name = "G_GuardMenu_ShieldAllMenu";
-            this.G_GuardMenu_ShieldAllMenu.Size = new System.Drawing.Size(152, 22);
+            this.G_GuardMenu_ShieldAllMenu.Size = new System.Drawing.Size(146, 22);
             this.G_GuardMenu_ShieldAllMenu.Text = "Edit All Shield";
             // 
             // G_GuardAllShieldMenu_Add5000
@@ -1447,44 +1265,572 @@
             this.G_GuardAllShieldMenu_Reset.Text = "Reset All Shield";
             this.G_GuardAllShieldMenu_Reset.Click += new System.EventHandler(this.ShieldAllMenu_Reset_Click);
             // 
-            // G_GuardMenu_ShieldMenu
+            // G_GuardMenu_GZone
             // 
-            this.G_GuardMenu_ShieldMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.G_GuardShieldMenu_Add5000,
-            this.G_GuardShieldMenu_Change,
-            this.G_GuardShieldMenu_Minus5000,
-            this.G_GuardShieldMenu_Reset});
-            this.G_GuardMenu_ShieldMenu.Name = "G_GuardMenu_ShieldMenu";
-            this.G_GuardMenu_ShieldMenu.Size = new System.Drawing.Size(152, 22);
-            this.G_GuardMenu_ShieldMenu.Text = "Edit Shield";
+            this.G_GuardMenu_GZone.Name = "G_GuardMenu_GZone";
+            this.G_GuardMenu_GZone.Size = new System.Drawing.Size(146, 22);
+            this.G_GuardMenu_GZone.Text = "To G Zone";
+            this.G_GuardMenu_GZone.Click += new System.EventHandler(this.G_GuardMenu_GZone_Click);
             // 
-            // G_GuardShieldMenu_Add5000
+            // G_GuardMenu_Target
             // 
-            this.G_GuardShieldMenu_Add5000.Name = "G_GuardShieldMenu_Add5000";
-            this.G_GuardShieldMenu_Add5000.Size = new System.Drawing.Size(152, 22);
-            this.G_GuardShieldMenu_Add5000.Text = "+5000 Shield";
-            this.G_GuardShieldMenu_Add5000.Click += new System.EventHandler(this.ShieldMenu_Add5000_Click);
+            this.G_GuardMenu_Target.Name = "G_GuardMenu_Target";
+            this.G_GuardMenu_Target.Size = new System.Drawing.Size(146, 22);
+            this.G_GuardMenu_Target.Text = "Target";
+            this.G_GuardMenu_Target.Click += new System.EventHandler(this.GuardMenu_Target_Click);
             // 
-            // G_GuardShieldMenu_Change
+            // pictureBox_PlyrTrigger
             // 
-            this.G_GuardShieldMenu_Change.Name = "G_GuardShieldMenu_Change";
-            this.G_GuardShieldMenu_Change.Size = new System.Drawing.Size(152, 22);
-            this.G_GuardShieldMenu_Change.Text = "Change Shield";
-            this.G_GuardShieldMenu_Change.Click += new System.EventHandler(this.ShieldMenu_Change_Click);
+            this.pictureBox_PlyrTrigger.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PlyrTrigger.Image")));
+            this.pictureBox_PlyrTrigger.Location = new System.Drawing.Point(401, 393);
+            this.pictureBox_PlyrTrigger.Name = "pictureBox_PlyrTrigger";
+            this.pictureBox_PlyrTrigger.Size = new System.Drawing.Size(75, 52);
+            this.pictureBox_PlyrTrigger.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_PlyrTrigger.TabIndex = 21;
+            this.pictureBox_PlyrTrigger.TabStop = false;
+            this.pictureBox_PlyrTrigger.Tag = "Trigger-0";
+            this.pictureBox_PlyrTrigger.Visible = false;
+            this.pictureBox_PlyrTrigger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBox_PlyrTrigger.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
             // 
-            // G_GuardShieldMenu_Minus5000
+            // pictureBox_GUp
             // 
-            this.G_GuardShieldMenu_Minus5000.Name = "G_GuardShieldMenu_Minus5000";
-            this.G_GuardShieldMenu_Minus5000.Size = new System.Drawing.Size(152, 22);
-            this.G_GuardShieldMenu_Minus5000.Text = "-5000 Shield";
-            this.G_GuardShieldMenu_Minus5000.Click += new System.EventHandler(this.ShieldMenu_Minus5000_Click);
+            this.pictureBox_GUp.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_GUp.Image")));
+            this.pictureBox_GUp.Location = new System.Drawing.Point(75, 371);
+            this.pictureBox_GUp.Name = "pictureBox_GUp";
+            this.pictureBox_GUp.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_GUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_GUp.TabIndex = 20;
+            this.pictureBox_GUp.TabStop = false;
+            this.pictureBox_GUp.Tag = "G Zone-0";
+            this.toolTip_Counts.SetToolTip(this.pictureBox_GUp, "G Zone: 16");
+            this.pictureBox_GUp.Visible = false;
+            this.pictureBox_GUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_GDown_MouseDown);
+            this.pictureBox_GUp.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
             // 
-            // G_GuardShieldMenu_Reset
+            // pictureBox_GDown
             // 
-            this.G_GuardShieldMenu_Reset.Name = "G_GuardShieldMenu_Reset";
-            this.G_GuardShieldMenu_Reset.Size = new System.Drawing.Size(152, 22);
-            this.G_GuardShieldMenu_Reset.Text = "Reset Shield";
-            this.G_GuardShieldMenu_Reset.Click += new System.EventHandler(this.ShieldMenu_Reset_Click);
+            this.pictureBox_GDown.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_GDown.Image")));
+            this.pictureBox_GDown.Location = new System.Drawing.Point(24, 371);
+            this.pictureBox_GDown.Name = "pictureBox_GDown";
+            this.pictureBox_GDown.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_GDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_GDown.TabIndex = 19;
+            this.pictureBox_GDown.TabStop = false;
+            this.pictureBox_GDown.Tag = "G Zone-0";
+            this.toolTip_Counts.SetToolTip(this.pictureBox_GDown, "G Zone: 16");
+            this.pictureBox_GDown.Visible = false;
+            this.pictureBox_GDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_GDown_MouseDown);
+            this.pictureBox_GDown.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            // 
+            // pictureBox_PlyrDrop
+            // 
+            this.pictureBox_PlyrDrop.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PlyrDrop.Image")));
+            this.pictureBox_PlyrDrop.Location = new System.Drawing.Point(421, 555);
+            this.pictureBox_PlyrDrop.Name = "pictureBox_PlyrDrop";
+            this.pictureBox_PlyrDrop.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_PlyrDrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_PlyrDrop.TabIndex = 18;
+            this.pictureBox_PlyrDrop.TabStop = false;
+            this.pictureBox_PlyrDrop.Tag = "Drop-0";
+            this.toolTip_Counts.SetToolTip(this.pictureBox_PlyrDrop, "Drop: 1");
+            this.pictureBox_PlyrDrop.Visible = false;
+            this.pictureBox_PlyrDrop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_PlyrDrop_MouseDown);
+            this.pictureBox_PlyrDrop.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            // 
+            // pictureBox_PlyrDeck
+            // 
+            this.pictureBox_PlyrDeck.ContextMenuStrip = this.DeckMenu;
+            this.pictureBox_PlyrDeck.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PlyrDeck.Image")));
+            this.pictureBox_PlyrDeck.Location = new System.Drawing.Point(421, 459);
+            this.pictureBox_PlyrDeck.Name = "pictureBox_PlyrDeck";
+            this.pictureBox_PlyrDeck.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_PlyrDeck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_PlyrDeck.TabIndex = 17;
+            this.pictureBox_PlyrDeck.TabStop = false;
+            this.pictureBox_PlyrDeck.Tag = "Deck-0";
+            this.toolTip_Counts.SetToolTip(this.pictureBox_PlyrDeck, "Deck: 49");
+            // 
+            // pictureBox_RG4
+            // 
+            this.pictureBox_RG4.ContextMenuStrip = this.RGMenu;
+            this.pictureBox_RG4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG4.Image")));
+            this.pictureBox_RG4.Location = new System.Drawing.Point(317, 560);
+            this.pictureBox_RG4.Name = "pictureBox_RG4";
+            this.pictureBox_RG4.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_RG4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_RG4.TabIndex = 16;
+            this.pictureBox_RG4.TabStop = false;
+            this.pictureBox_RG4.Tag = "Rearguard-4";
+            this.pictureBox_RG4.Visible = false;
+            this.pictureBox_RG4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBox_RG4.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            // 
+            // pictureBox_RG3
+            // 
+            this.pictureBox_RG3.ContextMenuStrip = this.RGMenu;
+            this.pictureBox_RG3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG3.Image")));
+            this.pictureBox_RG3.Location = new System.Drawing.Point(220, 560);
+            this.pictureBox_RG3.Name = "pictureBox_RG3";
+            this.pictureBox_RG3.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_RG3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_RG3.TabIndex = 15;
+            this.pictureBox_RG3.TabStop = false;
+            this.pictureBox_RG3.Tag = "Rearguard-3";
+            this.pictureBox_RG3.Visible = false;
+            this.pictureBox_RG3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBox_RG3.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            // 
+            // pictureBox_RG2
+            // 
+            this.pictureBox_RG2.ContextMenuStrip = this.RGMenu;
+            this.pictureBox_RG2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG2.Image")));
+            this.pictureBox_RG2.Location = new System.Drawing.Point(123, 560);
+            this.pictureBox_RG2.Name = "pictureBox_RG2";
+            this.pictureBox_RG2.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_RG2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_RG2.TabIndex = 14;
+            this.pictureBox_RG2.TabStop = false;
+            this.pictureBox_RG2.Tag = "Rearguard-2";
+            this.pictureBox_RG2.Visible = false;
+            this.pictureBox_RG2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBox_RG2.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            // 
+            // pictureBox_RG1
+            // 
+            this.pictureBox_RG1.ContextMenuStrip = this.RGMenu;
+            this.pictureBox_RG1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG1.Image")));
+            this.pictureBox_RG1.Location = new System.Drawing.Point(317, 456);
+            this.pictureBox_RG1.Name = "pictureBox_RG1";
+            this.pictureBox_RG1.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_RG1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_RG1.TabIndex = 13;
+            this.pictureBox_RG1.TabStop = false;
+            this.pictureBox_RG1.Tag = "Rearguard-1";
+            this.pictureBox_RG1.Visible = false;
+            this.pictureBox_RG1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBox_RG1.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            // 
+            // pictureBox_RG0
+            // 
+            this.pictureBox_RG0.ContextMenuStrip = this.RGMenu;
+            this.pictureBox_RG0.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_RG0.Image")));
+            this.pictureBox_RG0.Location = new System.Drawing.Point(123, 456);
+            this.pictureBox_RG0.Name = "pictureBox_RG0";
+            this.pictureBox_RG0.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_RG0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_RG0.TabIndex = 12;
+            this.pictureBox_RG0.TabStop = false;
+            this.pictureBox_RG0.Tag = "Rearguard-0";
+            this.pictureBox_RG0.Visible = false;
+            this.pictureBox_RG0.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBox_RG0.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            // 
+            // pictureBox_VG
+            // 
+            this.pictureBox_VG.ContextMenuStrip = this.VGMenu;
+            this.pictureBox_VG.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_VG.Image")));
+            this.pictureBox_VG.Location = new System.Drawing.Point(220, 456);
+            this.pictureBox_VG.Name = "pictureBox_VG";
+            this.pictureBox_VG.Size = new System.Drawing.Size(52, 75);
+            this.pictureBox_VG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_VG.TabIndex = 11;
+            this.pictureBox_VG.TabStop = false;
+            this.pictureBox_VG.Tag = "Vanguard-0";
+            this.toolTip_Counts.SetToolTip(this.pictureBox_VG, "Soul: 0");
+            this.pictureBox_VG.Visible = false;
+            this.pictureBox_VG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBox_VG.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            // 
+            // pictureBox_Field
+            // 
+            this.pictureBox_Field.ContextMenuStrip = this.FieldMenu;
+            this.pictureBox_Field.Controls.Add(this.label_VGPower);
+            this.pictureBox_Field.Controls.Add(this.label_RG1);
+            this.pictureBox_Field.Controls.Add(this.label_RG2);
+            this.pictureBox_Field.Controls.Add(this.label_RG3);
+            this.pictureBox_Field.Controls.Add(this.label_RG4);
+            this.pictureBox_Field.Controls.Add(this.label_RG5);
+            this.pictureBox_Field.Controls.Add(this.label_ShieldTotal);
+            this.pictureBox_Field.Image = global::Cray_Simulator.Properties.Resources.Cray_Simulator_Loaded_Playmat;
+            this.pictureBox_Field.Location = new System.Drawing.Point(0, 76);
+            this.pictureBox_Field.Name = "pictureBox_Field";
+            this.pictureBox_Field.Size = new System.Drawing.Size(498, 590);
+            this.pictureBox_Field.TabIndex = 7;
+            this.pictureBox_Field.TabStop = false;
+            this.pictureBox_Field.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Field_MouseUp);
+            // 
+            // FieldMenu
+            // 
+            this.FieldMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FieldMenu_StandAll,
+            this.FieldMenu_Unlock,
+            this.editAllPowerToolStripMenuItem,
+            this.FieldMenu_CoinFlip,
+            this.FieldMenu_EndTurn});
+            this.FieldMenu.Name = "FieldStrip";
+            this.FieldMenu.Size = new System.Drawing.Size(171, 114);
+            // 
+            // FieldMenu_StandAll
+            // 
+            this.FieldMenu_StandAll.Name = "FieldMenu_StandAll";
+            this.FieldMenu_StandAll.Size = new System.Drawing.Size(170, 22);
+            this.FieldMenu_StandAll.Text = "[Stand] All";
+            this.FieldMenu_StandAll.Click += new System.EventHandler(this.FieldMenu_StandAll_Click);
+            // 
+            // FieldMenu_Unlock
+            // 
+            this.FieldMenu_Unlock.Name = "FieldMenu_Unlock";
+            this.FieldMenu_Unlock.Size = new System.Drawing.Size(170, 22);
+            this.FieldMenu_Unlock.Text = "Unlock All";
+            this.FieldMenu_Unlock.Click += new System.EventHandler(this.FieldMenu_Unlock_Click);
+            // 
+            // editAllPowerToolStripMenuItem
+            // 
+            this.editAllPowerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FieldPowerMenu_Add5000,
+            this.FieldPowerMenu_Change,
+            this.FieldPowerMenu_Minus5000,
+            this.FieldPowerMenu_Reset});
+            this.editAllPowerToolStripMenuItem.Name = "editAllPowerToolStripMenuItem";
+            this.editAllPowerToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.editAllPowerToolStripMenuItem.Text = "Edit All Power";
+            // 
+            // FieldPowerMenu_Add5000
+            // 
+            this.FieldPowerMenu_Add5000.Name = "FieldPowerMenu_Add5000";
+            this.FieldPowerMenu_Add5000.Size = new System.Drawing.Size(196, 22);
+            this.FieldPowerMenu_Add5000.Text = "+5000 Power";
+            this.FieldPowerMenu_Add5000.Click += new System.EventHandler(this.FieldPowerMenu_Add5000_Click);
+            // 
+            // FieldPowerMenu_Change
+            // 
+            this.FieldPowerMenu_Change.Name = "FieldPowerMenu_Change";
+            this.FieldPowerMenu_Change.Size = new System.Drawing.Size(196, 22);
+            this.FieldPowerMenu_Change.Text = "Change All Power";
+            this.FieldPowerMenu_Change.Click += new System.EventHandler(this.FieldPowerMenu_Change_Click);
+            // 
+            // FieldPowerMenu_Minus5000
+            // 
+            this.FieldPowerMenu_Minus5000.Name = "FieldPowerMenu_Minus5000";
+            this.FieldPowerMenu_Minus5000.Size = new System.Drawing.Size(196, 22);
+            this.FieldPowerMenu_Minus5000.Text = "-5000 Power";
+            this.FieldPowerMenu_Minus5000.Click += new System.EventHandler(this.FieldPowerMenu_Minus5000_Click);
+            // 
+            // FieldPowerMenu_Reset
+            // 
+            this.FieldPowerMenu_Reset.Name = "FieldPowerMenu_Reset";
+            this.FieldPowerMenu_Reset.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.FieldPowerMenu_Reset.Size = new System.Drawing.Size(196, 22);
+            this.FieldPowerMenu_Reset.Text = "Reset All Power";
+            this.FieldPowerMenu_Reset.Click += new System.EventHandler(this.shortcutMenu_ResetAll_Click);
+            // 
+            // FieldMenu_CoinFlip
+            // 
+            this.FieldMenu_CoinFlip.Name = "FieldMenu_CoinFlip";
+            this.FieldMenu_CoinFlip.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.FieldMenu_CoinFlip.Size = new System.Drawing.Size(170, 22);
+            this.FieldMenu_CoinFlip.Text = "Flip a Coin";
+            this.FieldMenu_CoinFlip.Click += new System.EventHandler(this.shortcutMenu_Coin_Click);
+            // 
+            // FieldMenu_EndTurn
+            // 
+            this.FieldMenu_EndTurn.Name = "FieldMenu_EndTurn";
+            this.FieldMenu_EndTurn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.FieldMenu_EndTurn.Size = new System.Drawing.Size(170, 22);
+            this.FieldMenu_EndTurn.Text = "End Turn";
+            this.FieldMenu_EndTurn.Click += new System.EventHandler(this.shortcutMenu_End_Click);
+            // 
+            // label_VGPower
+            // 
+            this.label_VGPower.AutoSize = true;
+            this.label_VGPower.BackColor = System.Drawing.Color.Transparent;
+            this.label_VGPower.ForeColor = System.Drawing.Color.White;
+            this.label_VGPower.Location = new System.Drawing.Point(225, 460);
+            this.label_VGPower.Name = "label_VGPower";
+            this.label_VGPower.Size = new System.Drawing.Size(43, 13);
+            this.label_VGPower.TabIndex = 14;
+            this.label_VGPower.Text = "Power: ";
+            this.label_VGPower.Visible = false;
+            // 
+            // label_RG1
+            // 
+            this.label_RG1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_RG1.AutoSize = true;
+            this.label_RG1.BackColor = System.Drawing.Color.Transparent;
+            this.label_RG1.ForeColor = System.Drawing.Color.White;
+            this.label_RG1.Location = new System.Drawing.Point(128, 460);
+            this.label_RG1.Name = "label_RG1";
+            this.label_RG1.Size = new System.Drawing.Size(40, 13);
+            this.label_RG1.TabIndex = 12;
+            this.label_RG1.Text = "Power:";
+            this.label_RG1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label_RG1.Visible = false;
+            // 
+            // label_RG2
+            // 
+            this.label_RG2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_RG2.AutoSize = true;
+            this.label_RG2.BackColor = System.Drawing.Color.Transparent;
+            this.label_RG2.ForeColor = System.Drawing.Color.White;
+            this.label_RG2.Location = new System.Drawing.Point(324, 460);
+            this.label_RG2.Name = "label_RG2";
+            this.label_RG2.Size = new System.Drawing.Size(40, 13);
+            this.label_RG2.TabIndex = 13;
+            this.label_RG2.Text = "Power:";
+            this.label_RG2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label_RG2.Visible = false;
+            // 
+            // label_RG3
+            // 
+            this.label_RG3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_RG3.AutoSize = true;
+            this.label_RG3.BackColor = System.Drawing.Color.Transparent;
+            this.label_RG3.ForeColor = System.Drawing.Color.White;
+            this.label_RG3.Location = new System.Drawing.Point(128, 564);
+            this.label_RG3.Name = "label_RG3";
+            this.label_RG3.Size = new System.Drawing.Size(40, 13);
+            this.label_RG3.TabIndex = 8;
+            this.label_RG3.Text = "Power:";
+            this.label_RG3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label_RG3.Visible = false;
+            // 
+            // label_RG4
+            // 
+            this.label_RG4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_RG4.AutoSize = true;
+            this.label_RG4.BackColor = System.Drawing.Color.Transparent;
+            this.label_RG4.ForeColor = System.Drawing.Color.White;
+            this.label_RG4.Location = new System.Drawing.Point(226, 564);
+            this.label_RG4.Name = "label_RG4";
+            this.label_RG4.Size = new System.Drawing.Size(40, 13);
+            this.label_RG4.TabIndex = 11;
+            this.label_RG4.Text = "Power:";
+            this.label_RG4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label_RG4.Visible = false;
+            // 
+            // label_RG5
+            // 
+            this.label_RG5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_RG5.AutoSize = true;
+            this.label_RG5.BackColor = System.Drawing.Color.Transparent;
+            this.label_RG5.ForeColor = System.Drawing.Color.White;
+            this.label_RG5.Location = new System.Drawing.Point(324, 564);
+            this.label_RG5.Name = "label_RG5";
+            this.label_RG5.Size = new System.Drawing.Size(40, 13);
+            this.label_RG5.TabIndex = 10;
+            this.label_RG5.Text = "Power:";
+            this.label_RG5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label_RG5.Visible = false;
+            // 
+            // label_ShieldTotal
+            // 
+            this.label_ShieldTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label_ShieldTotal.AutoSize = true;
+            this.label_ShieldTotal.BackColor = System.Drawing.Color.Transparent;
+            this.label_ShieldTotal.ForeColor = System.Drawing.Color.White;
+            this.label_ShieldTotal.Location = new System.Drawing.Point(230, 341);
+            this.label_ShieldTotal.Name = "label_ShieldTotal";
+            this.label_ShieldTotal.Size = new System.Drawing.Size(39, 13);
+            this.label_ShieldTotal.TabIndex = 14;
+            this.label_ShieldTotal.Text = "Shield:";
+            this.label_ShieldTotal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label_ShieldTotal.Visible = false;
+            // 
+            // DeckCardMenu
+            // 
+            this.DeckCardMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeckCardMenu_Reveal,
+            this.DeckCardMenu_BindUp,
+            this.DeckCardMenu_BindDown,
+            this.DeckCardMenu_TopDeck,
+            this.DeckCardMenu_Bottom,
+            this.DeckCardMenu_Shuffle});
+            this.DeckCardMenu.Name = "CheckCardsStrip";
+            this.DeckCardMenu.Size = new System.Drawing.Size(162, 136);
+            this.DeckCardMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DeckCardMenu_Opening);
+            // 
+            // DeckCardMenu_Reveal
+            // 
+            this.DeckCardMenu_Reveal.Name = "DeckCardMenu_Reveal";
+            this.DeckCardMenu_Reveal.Size = new System.Drawing.Size(161, 22);
+            this.DeckCardMenu_Reveal.Text = "Reveal";
+            this.DeckCardMenu_Reveal.Click += new System.EventHandler(this.DeckCardMenu_Reveal_Click);
+            // 
+            // DeckCardMenu_BindUp
+            // 
+            this.DeckCardMenu_BindUp.Name = "DeckCardMenu_BindUp";
+            this.DeckCardMenu_BindUp.Size = new System.Drawing.Size(161, 22);
+            this.DeckCardMenu_BindUp.Text = "Bind Face-Up";
+            this.DeckCardMenu_BindUp.Click += new System.EventHandler(this.DeckCardMenu_BindUp_Click);
+            // 
+            // DeckCardMenu_BindDown
+            // 
+            this.DeckCardMenu_BindDown.Name = "DeckCardMenu_BindDown";
+            this.DeckCardMenu_BindDown.Size = new System.Drawing.Size(161, 22);
+            this.DeckCardMenu_BindDown.Text = "Bind Face-Down";
+            this.DeckCardMenu_BindDown.Click += new System.EventHandler(this.DeckCardMenu_BindDown_Click);
+            // 
+            // DeckCardMenu_TopDeck
+            // 
+            this.DeckCardMenu_TopDeck.Name = "DeckCardMenu_TopDeck";
+            this.DeckCardMenu_TopDeck.Size = new System.Drawing.Size(161, 22);
+            this.DeckCardMenu_TopDeck.Text = "To Top Deck";
+            this.DeckCardMenu_TopDeck.Click += new System.EventHandler(this.DeckCardMenu_TopDeck_Click);
+            // 
+            // DeckCardMenu_Bottom
+            // 
+            this.DeckCardMenu_Bottom.Name = "DeckCardMenu_Bottom";
+            this.DeckCardMenu_Bottom.Size = new System.Drawing.Size(161, 22);
+            this.DeckCardMenu_Bottom.Text = "To Bottom Deck";
+            this.DeckCardMenu_Bottom.Click += new System.EventHandler(this.DeckCardMenu_Bottom_Click);
+            // 
+            // DeckCardMenu_Shuffle
+            // 
+            this.DeckCardMenu_Shuffle.Name = "DeckCardMenu_Shuffle";
+            this.DeckCardMenu_Shuffle.Size = new System.Drawing.Size(161, 22);
+            this.DeckCardMenu_Shuffle.Text = "All Deck/Shuffle";
+            this.DeckCardMenu_Shuffle.Click += new System.EventHandler(this.shortcutMenu_Shuffle_Click);
+            // 
+            // SoulMenu
+            // 
+            this.SoulMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SoulMenu_SoulBlast,
+            this.SoulMenu_Bind,
+            this.SoulMenu_TopDeck,
+            this.SoulMenu_BottomDeck,
+            this.SoulMenu_Target});
+            this.SoulMenu.Name = "SoulStrip";
+            this.SoulMenu.Size = new System.Drawing.Size(144, 114);
+            this.SoulMenu.Opening += new System.ComponentModel.CancelEventHandler(this.GuardMenu_Opening);
+            // 
+            // SoulMenu_SoulBlast
+            // 
+            this.SoulMenu_SoulBlast.Name = "SoulMenu_SoulBlast";
+            this.SoulMenu_SoulBlast.Size = new System.Drawing.Size(143, 22);
+            this.SoulMenu_SoulBlast.Text = "Soul Blast";
+            this.SoulMenu_SoulBlast.Click += new System.EventHandler(this.SoulMenu_SoulBlast_Click);
+            // 
+            // SoulMenu_Bind
+            // 
+            this.SoulMenu_Bind.Name = "SoulMenu_Bind";
+            this.SoulMenu_Bind.Size = new System.Drawing.Size(143, 22);
+            this.SoulMenu_Bind.Text = "To Bind";
+            this.SoulMenu_Bind.Click += new System.EventHandler(this.SoulMenu_Bind_Click);
+            // 
+            // SoulMenu_TopDeck
+            // 
+            this.SoulMenu_TopDeck.Name = "SoulMenu_TopDeck";
+            this.SoulMenu_TopDeck.Size = new System.Drawing.Size(143, 22);
+            this.SoulMenu_TopDeck.Text = "Top Deck";
+            this.SoulMenu_TopDeck.Click += new System.EventHandler(this.SoulMenu_TopDeck_Click);
+            // 
+            // SoulMenu_BottomDeck
+            // 
+            this.SoulMenu_BottomDeck.Name = "SoulMenu_BottomDeck";
+            this.SoulMenu_BottomDeck.Size = new System.Drawing.Size(143, 22);
+            this.SoulMenu_BottomDeck.Text = "Bottom Deck";
+            this.SoulMenu_BottomDeck.Click += new System.EventHandler(this.SoulMenu_BottomDeck_Click);
+            // 
+            // SoulMenu_Target
+            // 
+            this.SoulMenu_Target.Name = "SoulMenu_Target";
+            this.SoulMenu_Target.Size = new System.Drawing.Size(143, 22);
+            this.SoulMenu_Target.Text = "Target";
+            this.SoulMenu_Target.Click += new System.EventHandler(this.SoulMenu_Target_Click);
+            // 
+            // DropMenu
+            // 
+            this.DropMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DropMenu_Bind,
+            this.DropMenu_Soul,
+            this.DropMenu_TopDeck,
+            this.DropMenu_BottomDeck,
+            this.DropMenu_Target,
+            this.DropMenu_AllDeck});
+            this.DropMenu.Name = "DropZoneStrip";
+            this.DropMenu.Size = new System.Drawing.Size(160, 136);
+            this.DropMenu.Opening += new System.ComponentModel.CancelEventHandler(this.GuardMenu_Opening);
+            // 
+            // DropMenu_Bind
+            // 
+            this.DropMenu_Bind.Name = "DropMenu_Bind";
+            this.DropMenu_Bind.Size = new System.Drawing.Size(159, 22);
+            this.DropMenu_Bind.Text = "To Bind";
+            this.DropMenu_Bind.Click += new System.EventHandler(this.DropMenu_Bind_Click);
+            // 
+            // DropMenu_Soul
+            // 
+            this.DropMenu_Soul.Name = "DropMenu_Soul";
+            this.DropMenu_Soul.Size = new System.Drawing.Size(159, 22);
+            this.DropMenu_Soul.Text = "To Soul";
+            this.DropMenu_Soul.Click += new System.EventHandler(this.DropMenu_Soul_Click);
+            // 
+            // DropMenu_TopDeck
+            // 
+            this.DropMenu_TopDeck.Name = "DropMenu_TopDeck";
+            this.DropMenu_TopDeck.Size = new System.Drawing.Size(159, 22);
+            this.DropMenu_TopDeck.Text = "Top Deck";
+            this.DropMenu_TopDeck.Click += new System.EventHandler(this.DropMenu_TopDeck_Click);
+            // 
+            // DropMenu_BottomDeck
+            // 
+            this.DropMenu_BottomDeck.Name = "DropMenu_BottomDeck";
+            this.DropMenu_BottomDeck.Size = new System.Drawing.Size(159, 22);
+            this.DropMenu_BottomDeck.Text = "Bottom Deck";
+            this.DropMenu_BottomDeck.Click += new System.EventHandler(this.DropMenu_BottomDeck_Click);
+            // 
+            // DropMenu_Target
+            // 
+            this.DropMenu_Target.Name = "DropMenu_Target";
+            this.DropMenu_Target.Size = new System.Drawing.Size(159, 22);
+            this.DropMenu_Target.Text = "Target";
+            this.DropMenu_Target.Click += new System.EventHandler(this.DropMenu_Target_Click);
+            // 
+            // DropMenu_AllDeck
+            // 
+            this.DropMenu_AllDeck.Name = "DropMenu_AllDeck";
+            this.DropMenu_AllDeck.Size = new System.Drawing.Size(159, 22);
+            this.DropMenu_AllDeck.Text = "All Deck/Shuffle";
+            this.DropMenu_AllDeck.Click += new System.EventHandler(this.DropMenu_AllDeck_Click);
+            // 
+            // BindMenu
+            // 
+            this.BindMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BindMenu_TopDeck,
+            this.BindMenu_BottomDeck,
+            this.BindMenu_TurnOver,
+            this.BindMenu_Target});
+            this.BindMenu.Name = "contextMenuStrip1";
+            this.BindMenu.Size = new System.Drawing.Size(153, 92);
+            // 
+            // BindMenu_TopDeck
+            // 
+            this.BindMenu_TopDeck.Name = "BindMenu_TopDeck";
+            this.BindMenu_TopDeck.Size = new System.Drawing.Size(152, 22);
+            this.BindMenu_TopDeck.Text = "Top Deck";
+            this.BindMenu_TopDeck.Click += new System.EventHandler(this.BindMenu_TopDeck_Click);
+            // 
+            // BindMenu_BottomDeck
+            // 
+            this.BindMenu_BottomDeck.Name = "BindMenu_BottomDeck";
+            this.BindMenu_BottomDeck.Size = new System.Drawing.Size(152, 22);
+            this.BindMenu_BottomDeck.Text = "Bottom Deck";
+            this.BindMenu_BottomDeck.Click += new System.EventHandler(this.BindMenu_BottomDeck_Click);
+            // 
+            // BindMenu_TurnOver
+            // 
+            this.BindMenu_TurnOver.Name = "BindMenu_TurnOver";
+            this.BindMenu_TurnOver.Size = new System.Drawing.Size(152, 22);
+            this.BindMenu_TurnOver.Text = "Face Up/Down";
+            this.BindMenu_TurnOver.Click += new System.EventHandler(this.BindMenu_TurnOver_Click);
+            // 
+            // BindMenu_Target
+            // 
+            this.BindMenu_Target.Name = "BindMenu_Target";
+            this.BindMenu_Target.Size = new System.Drawing.Size(152, 22);
+            this.BindMenu_Target.Text = "Target";
+            this.BindMenu_Target.Click += new System.EventHandler(this.BindMenu_Target_Click);
             // 
             // Battlefield
             // 
@@ -1515,23 +1861,9 @@
             this.groupBox_Chat.PerformLayout();
             this.groupBox_Info.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Field)).EndInit();
-            this.pictureBox_Field.ResumeLayout(false);
-            this.pictureBox_Field.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_VG)).EndInit();
             this.VGMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG0)).EndInit();
             this.RGMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrDeck)).EndInit();
             this.DeckMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrDrop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_GDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_GUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrTrigger)).EndInit();
             this.ShortcutMenu.ResumeLayout(false);
             this.ShortcutMenu.PerformLayout();
             this.PlaceVCMenu.ResumeLayout(false);
@@ -1541,6 +1873,25 @@
             this.RG_GMenu.ResumeLayout(false);
             this.GuardMenu.ResumeLayout(false);
             this.G_GuardMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrTrigger)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_GUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_GDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrDrop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlyrDeck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RG0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_VG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Field)).EndInit();
+            this.pictureBox_Field.ResumeLayout(false);
+            this.pictureBox_Field.PerformLayout();
+            this.FieldMenu.ResumeLayout(false);
+            this.DeckCardMenu.ResumeLayout(false);
+            this.SoulMenu.ResumeLayout(false);
+            this.DropMenu.ResumeLayout(false);
+            this.BindMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1692,5 +2043,42 @@
         private System.Windows.Forms.ToolStripMenuItem G_GuardShieldMenu_Change;
         private System.Windows.Forms.ToolStripMenuItem G_GuardShieldMenu_Minus5000;
         private System.Windows.Forms.ToolStripMenuItem G_GuardShieldMenu_Reset;
+        private System.Windows.Forms.ContextMenuStrip DeckCardMenu;
+        private System.Windows.Forms.ToolStripMenuItem DeckCardMenu_BindUp;
+        private System.Windows.Forms.ToolStripMenuItem DeckCardMenu_BindDown;
+        private System.Windows.Forms.ToolStripMenuItem DeckCardMenu_TopDeck;
+        private System.Windows.Forms.ToolStripMenuItem DeckCardMenu_Bottom;
+        private System.Windows.Forms.ToolStripMenuItem DeckCardMenu_Shuffle;
+        private System.Windows.Forms.ToolStripMenuItem DeckCardMenu_Reveal;
+        private System.Windows.Forms.ContextMenuStrip SoulMenu;
+        private System.Windows.Forms.ToolStripMenuItem SoulMenu_SoulBlast;
+        private System.Windows.Forms.ToolStripMenuItem SoulMenu_Bind;
+        private System.Windows.Forms.ToolStripMenuItem SoulMenu_TopDeck;
+        private System.Windows.Forms.ToolStripMenuItem SoulMenu_BottomDeck;
+        private System.Windows.Forms.ToolStripMenuItem SoulMenu_Target;
+        private System.Windows.Forms.ContextMenuStrip DropMenu;
+        private System.Windows.Forms.ToolStripMenuItem DropMenu_Bind;
+        private System.Windows.Forms.ToolStripMenuItem DropMenu_Soul;
+        private System.Windows.Forms.ToolStripMenuItem DropMenu_TopDeck;
+        private System.Windows.Forms.ToolStripMenuItem DropMenu_BottomDeck;
+        private System.Windows.Forms.ToolStripMenuItem DropMenu_Target;
+        private System.Windows.Forms.ToolStripMenuItem DropMenu_AllDeck;
+        private System.Windows.Forms.ContextMenuStrip BindMenu;
+        private System.Windows.Forms.ToolStripMenuItem BindMenu_TopDeck;
+        private System.Windows.Forms.ToolStripMenuItem BindMenu_BottomDeck;
+        private System.Windows.Forms.ToolStripMenuItem BindMenu_TurnOver;
+        private System.Windows.Forms.ToolStripMenuItem BindMenu_Target;
+        private System.Windows.Forms.ContextMenuStrip FieldMenu;
+        private System.Windows.Forms.ToolStripMenuItem FieldMenu_StandAll;
+        private System.Windows.Forms.ToolStripMenuItem FieldMenu_EndTurn;
+        private System.Windows.Forms.ToolStripMenuItem FieldMenu_Unlock;
+        private System.Windows.Forms.ToolStripMenuItem FieldMenu_CoinFlip;
+        private System.Windows.Forms.ToolStripMenuItem editAllPowerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FieldPowerMenu_Add5000;
+        private System.Windows.Forms.ToolStripMenuItem FieldPowerMenu_Change;
+        private System.Windows.Forms.ToolStripMenuItem FieldPowerMenu_Minus5000;
+        private System.Windows.Forms.ToolStripMenuItem FieldPowerMenu_Reset;
+        private System.Windows.Forms.ToolStripMenuItem ShortcutMenu_XRide;
+        private System.Windows.Forms.ToolTip toolTip_Counts;
     }
 }

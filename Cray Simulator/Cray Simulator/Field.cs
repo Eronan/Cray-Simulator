@@ -60,7 +60,7 @@ namespace Cray_Simulator
             {
                 case "Rearguard":
                     return RGCircles[result];
-                case "DecK":
+                case "Deck":
                     return Deck[result];
                 case "Drop":
                     return DropZone[result];
@@ -98,8 +98,10 @@ namespace Cray_Simulator
                 case "Rearguard":
                     RGCircles[result] = null;
                     break;
-                case "DecK":
+                case "Deck":
                     Deck.RemoveAt(result);
+                    //Update Check Deck
+                    if (CheckDeck > 0) CheckDeck--;
                     break;
                 case "Drop":
                     DropZone.RemoveAt(result);
