@@ -275,6 +275,7 @@
             this.textBox_ChatInput.Name = "textBox_ChatInput";
             this.textBox_ChatInput.Size = new System.Drawing.Size(278, 20);
             this.textBox_ChatInput.TabIndex = 0;
+            this.textBox_ChatInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_ChatInput_KeyPress);
             // 
             // richTextBox_Chat
             // 

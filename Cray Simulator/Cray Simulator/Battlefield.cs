@@ -39,6 +39,7 @@ namespace Cray_Simulator
             //Images
             mainSleeve = ImageConverter.ToBitmap(Properties.Settings.Default.MainSleeve);
             GSleeve = ImageConverter.ToBitmap(Properties.Settings.Default.GSleeve);
+            pictureBox_GDown.Image = GSleeve;
             pictureBox_Field.Image = ImageConverter.ToBitmap(Properties.Settings.Default.Playmat);
 
             //Set Arrays
@@ -407,7 +408,7 @@ namespace Cray_Simulator
                 if (picBox.Image != null) picBox.Image.Dispose();
 
                 //Image
-                picBox.Image = !crd.FaceUp ? (Image)new Bitmap(mainSleeve) : (Image)new Bitmap(crd.Image);
+                picBox.Image = !crd.FaceUp ? new Bitmap(mainSleeve) : new Bitmap(crd.Image);
                 picBox.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
 
                 //Image Location
@@ -562,6 +563,16 @@ namespace Cray_Simulator
             }
             currentZone = new ViewZone(plyr_Field.BindZone, "Bind Zone", this, mainSleeve, (crd => crd.FaceUp), BindMenu);
             currentZone.Show(this);
+        }
+
+        private void textBox_ChatInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Submit
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                richTextBox_Chat.AppendText(Environment.NewLine + "<" + Properties.Settings.Default.Username + ">:" + textBox_ChatInput.Text);
+                textBox_ChatInput.Text = "";
+            }
         }
 
         private void shortcutMenu_Draw_Click(object sender, EventArgs e)
