@@ -60,8 +60,13 @@ namespace Cray_Simulator
         public void ImageUpdate()
         {
             //Update Deck
-            if (plyr_Field.Deck[0].FaceUp) pictureBox_PlyrDeck.Image = plyr_Field.Deck[0].Image;
-            else pictureBox_PlyrDeck.Image = mainSleeve;
+            if (plyr_Field.Deck.Count > 0)
+            {
+                pictureBox_PlyrDeck.Visible = true;
+                if (plyr_Field.Deck[0].FaceUp) pictureBox_PlyrDeck.Image = plyr_Field.Deck[0].Image;
+                else pictureBox_PlyrDeck.Image = mainSleeve;
+            }
+            else pictureBox_PlyrDeck.Visible = false;
             //Set Values
             for (int i = 0; i < plyr_Field.Deck.Count; i++) plyr_Field.Deck[i].Location = "Deck-" + i;
             toolTip_Counts.SetToolTip(pictureBox_PlyrDeck, "Deck: " + plyr_Field.Deck.Count);
@@ -577,6 +582,8 @@ namespace Cray_Simulator
 
         private void shortcutMenu_Draw_Click(object sender, EventArgs e)
         {
+            if (plyr_Field.Deck.Count == 0) return;
+
             //Set Values
             plyr_Field.Deck[0].Location = "Hand-" + plyr_Field.Hand.Count;
             plyr_Field.Deck[0].Reset();
@@ -596,6 +603,8 @@ namespace Cray_Simulator
 
         private void shortcutMenu_Shuffle_Click(object sender, EventArgs e)
         {
+            if (plyr_Field.Deck.Count == 0) return;
+
             //Shuffle Deck
             plyr_Field.ShuffleDeck();
 
@@ -614,7 +623,7 @@ namespace Cray_Simulator
 
         private void shortcutMenu_Trigger_Click(object sender, EventArgs e)
         {
-            if (plyr_Field.TriggerZone != null) return;
+            if (plyr_Field.TriggerZone != null || plyr_Field.Deck.Count == 0) return;
 
             //Set Values
             Card crd = plyr_Field.Deck[0];
@@ -636,6 +645,8 @@ namespace Cray_Simulator
 
         private void shortcutMenu_SoulCharge_Click(object sender, EventArgs e)
         {
+            if (plyr_Field.Deck.Count == 0) return;
+
             //Set Values
             Card crd = plyr_Field.Deck[0];
             crd.Location = "Soul-" + plyr_Field.Soul.Count;

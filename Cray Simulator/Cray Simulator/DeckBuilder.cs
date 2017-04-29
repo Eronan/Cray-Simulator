@@ -127,6 +127,7 @@ namespace Cray_Simulator
             //Load Previous Deck
             if (currentSettings.LoadPrevDeck && currentSettings.PrevDeck.Length > 0)
             {
+                if (!File.Exists(currentSettings.PrevDeck)) return;
                 OpenFromFile(currentSettings.PrevDeck);
                 saveLocation = currentSettings.PrevDeck;
             }
