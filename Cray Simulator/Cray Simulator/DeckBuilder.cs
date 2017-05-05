@@ -607,6 +607,7 @@ namespace Cray_Simulator
                     list_Searched.Add(keyValue);
             }
 
+            list_Searched = list_Searched.OrderBy(keyValue => keyValue.Value).ToList();
             listBox_Search.DataSource = list_Searched.ToList();
         }
 

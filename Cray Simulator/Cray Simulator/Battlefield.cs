@@ -158,7 +158,7 @@ namespace Cray_Simulator
                 pictureBox_PlyrDrop.Visible = true;
                 pictureBox_PlyrDrop.Image = plyr_Field.DropZone.Last().Image;
                 pictureBox_PlyrDrop.Tag = "Drop-" + (plyr_Field.DropZone.Count - 1);
-                toolTip_Counts.SetToolTip(pictureBox_PlyrDeck, "Drop Zone: " + plyr_Field.DropZone.Count);
+                toolTip_Counts.SetToolTip(pictureBox_PlyrDrop, "Drop Zone: " + plyr_Field.DropZone.Count);
 
                 //Drop Zone
                 for (int i = 0; i < plyr_Field.DropZone.Count; i++) plyr_Field.DropZone[i].Location = "Drop-" + i;
@@ -687,6 +687,7 @@ namespace Cray_Simulator
                         {
                             //All Legioned G Units to G Zone as well
                             crd.Location = "G Zone-" + plyr_Field.GZone.Count;
+                            crd.Reset();
                             crd.FaceUp = true;
                             plyr_Field.GZone.Add(crd);
                         }
@@ -694,6 +695,7 @@ namespace Cray_Simulator
                         {
                             //Put Legioned Units into Drop Zone
                             crd.Location = "Drop Zone-" + plyr_Field.DropZone.Count;
+                            crd.Reset();
                             plyr_Field.DropZone.Add(crd);
                         }
                     }
@@ -874,7 +876,7 @@ namespace Cray_Simulator
         private void PlaceVCMenu_Opening(object sender, CancelEventArgs e)
         {
             //Disable Legion
-            if (plyr_Field.VGCircle.Count > 1 || plyr_Field.VGCircle[0].Unit == unitType.G) PlaceVCMenu_Legion.Enabled = false;
+            if (plyr_Field.VGCircle.Count != 1 || plyr_Field.VGCircle[0].Unit == unitType.G) PlaceVCMenu_Legion.Enabled = false;
             else PlaceVCMenu_Legion.Enabled = true;
         }
 
@@ -892,7 +894,7 @@ namespace Cray_Simulator
             heartVanguard.AddRange(plyr_Field.VGCircle);
             heartVanguard.AddRange(plyr_Field.Heart);
 
-            int highestGrade = 0;
+            int highestGrade = -1;
             foreach (Card crd in heartVanguard)
             {
                 if (crd.Unit == unitType.G)
@@ -931,7 +933,8 @@ namespace Cray_Simulator
             if ((!initLocation.StartsWith("Rearguard") && !initLocation.StartsWith("Guardian")) || !hoverCard.FaceUp)
             {
                 hoverCard.Reset();
-                richTextBox_Chat.AppendText(playerName + "rode " + hoverCard.Name + ". Grade " + highestGrade + " -> " + hoverCard.Grade);
+                if (highestGrade < 0) richTextBox_Chat.AppendText(playerName + "rode " + hoverCard.Name + ".");
+                else richTextBox_Chat.AppendText(playerName + "rode " + hoverCard.Name + ". Grade " + highestGrade + " -> " + hoverCard.Grade);
             }
             else richTextBox_Chat.AppendText(playerName + "moved " + hoverCard.Name + " to (VC).");
             //Update Images
@@ -2222,6 +2225,61 @@ namespace Cray_Simulator
             currentZone.Show(this);
         }
 
+        private void TriggerMenu_Bind_Click(object sender, EventArgs e)
+        {
+            string initLocation = hoverCard.Location;
+
+            //Set Values
+            hoverCard.Location = "Bind-" + plyr_Field.BindZone.Count;
+            hoverCard.Reset();
+            hoverCard.FaceUp = true;
+
+            //Move to Bind Zone
+            plyr_Field.BindZone.Add(hoverCard);
+            plyr_Field.RemoveCard(initLocation);
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + " bound " + hoverCard.Name + " from rear-guard.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void TriggerMenu_TopDeck_Click(object sender, EventArgs e)
+        {
+            //Remove Card
+            plyr_Field.RemoveCard(hoverCard.Location);
+
+            //Set Values
+            hoverCard.Location = "Deck-0";
+            hoverCard.Reset();
+
+            //Add to Bind ZOne
+            plyr_Field.Deck.Insert(0, hoverCard);
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "put " + hoverCard.Name + " on top of their deck.");
+            //Update Images
+            ImageUpdate();
+        }
+
+        private void TriggerMenu_BottomDeck_Click(object sender, EventArgs e)
+        {
+            //Remove Card
+            plyr_Field.RemoveCard(hoverCard.Location);
+
+            //Set Values
+            hoverCard.Location = "Deck-" + plyr_Field.Deck.Count;
+            hoverCard.Reset();
+
+            //Add to Bind ZOne
+            plyr_Field.Deck.Add(hoverCard);
+
+            //Update Chat
+            richTextBox_Chat.AppendText(playerName + "put " + hoverCard.Name + " on bottom of their deck.");
+            //Update Images
+            ImageUpdate();
+        }
+
         private void pictureBox_GDown_MouseDown(object sender, MouseEventArgs e)
         {
             if (currentZone != null)
@@ -2300,11 +2358,11 @@ namespace Cray_Simulator
                 else if (PointRange(new Point(317, 560), new Point(369, 635)).Contains(e.Location)) RGMethod(4);//Rear-guard 4
                 else if (PointRange(new Point(220, 456), new Point(272, 531)).Contains(e.Location) && !hoverCard.Location.StartsWith("Vanguard"))
                 {
-                    //Vanguard
-                    bool rested = plyr_Field.VGCircle[0].Rested;
-
                     if (hoverCard.Unit == unitType.G)
                     {
+                        //Vanguard
+                        bool rested = plyr_Field.VGCircle[0].Rested;
+
                         //Stride
                         int maxPower = 0;
 

@@ -211,6 +211,10 @@
             this.BindMenu_TurnOver = new System.Windows.Forms.ToolStripMenuItem();
             this.BindMenu_Target = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip_Counts = new System.Windows.Forms.ToolTip(this.components);
+            this.TriggerMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TriggerMenu_Bind = new System.Windows.Forms.ToolStripMenuItem();
+            this.TriggerMenu_TopDeck = new System.Windows.Forms.ToolStripMenuItem();
+            this.TriggerMenu_BottomDeck = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox_Chat.SuspendLayout();
             this.groupBox_Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Info)).BeginInit();
@@ -243,6 +247,7 @@
             this.SoulMenu.SuspendLayout();
             this.DropMenu.SuspendLayout();
             this.BindMenu.SuspendLayout();
+            this.TriggerMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_Chat
@@ -1282,6 +1287,7 @@
             // 
             // pictureBox_PlyrTrigger
             // 
+            this.pictureBox_PlyrTrigger.ContextMenuStrip = this.TriggerMenu;
             this.pictureBox_PlyrTrigger.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PlyrTrigger.Image")));
             this.pictureBox_PlyrTrigger.Location = new System.Drawing.Point(401, 393);
             this.pictureBox_PlyrTrigger.Name = "pictureBox_PlyrTrigger";
@@ -1833,6 +1839,36 @@
             this.BindMenu_Target.Text = "Target";
             this.BindMenu_Target.Click += new System.EventHandler(this.BindMenu_Target_Click);
             // 
+            // TriggerMenu
+            // 
+            this.TriggerMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TriggerMenu_Bind,
+            this.TriggerMenu_TopDeck,
+            this.TriggerMenu_BottomDeck});
+            this.TriggerMenu.Name = "CardsHand";
+            this.TriggerMenu.Size = new System.Drawing.Size(144, 70);
+            // 
+            // TriggerMenu_Bind
+            // 
+            this.TriggerMenu_Bind.Name = "TriggerMenu_Bind";
+            this.TriggerMenu_Bind.Size = new System.Drawing.Size(143, 22);
+            this.TriggerMenu_Bind.Text = "Bind";
+            this.TriggerMenu_Bind.Click += new System.EventHandler(this.TriggerMenu_Bind_Click);
+            // 
+            // TriggerMenu_TopDeck
+            // 
+            this.TriggerMenu_TopDeck.Name = "TriggerMenu_TopDeck";
+            this.TriggerMenu_TopDeck.Size = new System.Drawing.Size(143, 22);
+            this.TriggerMenu_TopDeck.Text = "Top Deck";
+            this.TriggerMenu_TopDeck.Click += new System.EventHandler(this.TriggerMenu_TopDeck_Click);
+            // 
+            // TriggerMenu_BottomDeck
+            // 
+            this.TriggerMenu_BottomDeck.Name = "TriggerMenu_BottomDeck";
+            this.TriggerMenu_BottomDeck.Size = new System.Drawing.Size(143, 22);
+            this.TriggerMenu_BottomDeck.Text = "Bottom Deck";
+            this.TriggerMenu_BottomDeck.Click += new System.EventHandler(this.TriggerMenu_BottomDeck_Click);
+            // 
             // Battlefield
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1893,6 +1929,7 @@
             this.SoulMenu.ResumeLayout(false);
             this.DropMenu.ResumeLayout(false);
             this.BindMenu.ResumeLayout(false);
+            this.TriggerMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2081,5 +2118,9 @@
         private System.Windows.Forms.ToolStripMenuItem FieldPowerMenu_Reset;
         private System.Windows.Forms.ToolStripMenuItem ShortcutMenu_XRide;
         private System.Windows.Forms.ToolTip toolTip_Counts;
+        private System.Windows.Forms.ContextMenuStrip TriggerMenu;
+        private System.Windows.Forms.ToolStripMenuItem TriggerMenu_Bind;
+        private System.Windows.Forms.ToolStripMenuItem TriggerMenu_TopDeck;
+        private System.Windows.Forms.ToolStripMenuItem TriggerMenu_BottomDeck;
     }
 }
